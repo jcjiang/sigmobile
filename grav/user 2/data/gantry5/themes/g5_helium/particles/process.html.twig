@@ -1,0 +1,66 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set particleheading %}
+	<div class="g-particle-intro">
+		{% if particle.mainheading %}
+			<h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+			<div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+		{% endif %}	
+		{% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+	</div>
+{% endset %}
+
+{% block particle %}
+	<div class="g-process{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+		{% if particle.mainheading or particle.introtext %}
+			{{ particleheading }}
+		{% endif %}
+		{% for item in particle.items %}
+			{% set attr_extra_item = '' %}
+			{% for extra in item.extra %}
+				{% set attr_extra_item = attr_extra_item ~ ' ' ~ extra|keys|first|e ~ '="' ~ extra|values|first|e('html_attr') ~ '"' %}
+			{% endfor %}
+			<div class="g-grid">
+				<div class="g-block">
+					<div class="g-process-item{% if item.class %} {{ item.class|e }}{% endif %} {% if item.invertcolor %} invert-color{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+						{% if item.image %}
+							<div class="g-process-image">
+								{% if item.icon %}
+									<span class="g-process-item-icon {{ item.icon|e }}"></span>
+								{% endif %}
+								<img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" {{ item.image|imagesize|raw }}>
+							</div>
+						{% endif %}
+
+						{% if item.title %}
+							<h4 class="g-process-item-title">
+								{%- if item.link -%}
+									<a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+								{%- endif -%}
+									{{- item.title|raw -}}
+								{%- if item.link -%}
+									</a>
+								{%- endif -%}
+							</h4>
+						{% endif %}
+
+						{% if item.description %}
+							<div class="g-process-item-desc">
+								{{- item.description|raw -}}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

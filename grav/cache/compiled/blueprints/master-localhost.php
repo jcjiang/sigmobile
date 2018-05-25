@@ -7,19 +7,19 @@ return [
         'system/blueprints/config' => [
             'media' => [
                 'file' => 'system/blueprints/config/media.yaml',
-                'modified' => 1524404112
+                'modified' => 1527270397
             ],
             'site' => [
                 'file' => 'system/blueprints/config/site.yaml',
-                'modified' => 1524404112
+                'modified' => 1527270397
             ],
             'streams' => [
                 'file' => 'system/blueprints/config/streams.yaml',
-                'modified' => 1524404112
+                'modified' => 1527270397
             ],
             'system' => [
                 'file' => 'system/blueprints/config/system.yaml',
-                'modified' => 1524404112
+                'modified' => 1527270397
             ]
         ],
         'user/plugins' => [
@@ -30,6 +30,10 @@ return [
             'plugins/bootstrapper' => [
                 'file' => 'user/plugins/bootstrapper/blueprints.yaml',
                 'modified' => 1524404102
+            ],
+            'plugins/custom-css' => [
+                'file' => 'user/plugins/custom-css/blueprints.yaml',
+                'modified' => 1527267294
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/blueprints.yaml',
@@ -2176,7 +2180,8 @@ return [
                 'label' => 'Resize Quality',
                 'default' => 0.80000000000000004,
                 'validate' => [
-                    'type' => 'number'
+                    'type' => 'number',
+                    'step' => 0.01
                 ],
                 'name' => 'plugins.admin.pagemedia.resize_quality',
                 'validation' => 'loose'
@@ -2526,6 +2531,53 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'plugins.bootstrapper.load_core_js',
+                'validation' => 'strict'
+            ],
+            'plugins.custom-css' => [
+                'type' => '_root',
+                'form_field' => false,
+                'form' => [
+                    'validation' => 'strict'
+                ]
+            ],
+            'plugins.custom-css.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.custom-css.enabled',
+                'validation' => 'strict'
+            ],
+            'plugins.custom-css.css_inline' => [
+                'type' => 'textarea',
+                'label' => 'Inline CSS',
+                'name' => 'plugins.custom-css.css_inline',
+                'validation' => 'strict'
+            ],
+            'plugins.custom-css.css_files' => [
+                'type' => 'list',
+                'label' => 'CSS Files',
+                'name' => 'plugins.custom-css.css_files',
+                'validation' => 'strict'
+            ],
+            'plugins.custom-css.css_files.path' => [
+                'type' => 'text',
+                'label' => 'File path',
+                'name' => 'plugins.custom-css.css_files.path',
+                'validation' => 'strict'
+            ],
+            'plugins.custom-css.css_files.priority' => [
+                'type' => 'int',
+                'label' => 'Priority (0=Default)',
+                'default' => 0,
+                'name' => 'plugins.custom-css.css_files.priority',
                 'validation' => 'strict'
             ],
             'plugins.email' => [
@@ -3945,6 +3997,14 @@ return [
                     'load_core_css' => 'plugins.bootstrapper.load_core_css',
                     'load_theme_css' => 'plugins.bootstrapper.load_theme_css',
                     'load_core_js' => 'plugins.bootstrapper.load_core_js'
+                ],
+                'custom-css' => [
+                    'enabled' => 'plugins.custom-css.enabled',
+                    'css_inline' => 'plugins.custom-css.css_inline',
+                    'css_files' => [
+                        'path' => 'plugins.custom-css.css_files.path',
+                        'priority' => 'plugins.custom-css.css_files.priority'
+                    ]
                 ],
                 'email' => [
                     'enabled' => 'plugins.email.enabled',

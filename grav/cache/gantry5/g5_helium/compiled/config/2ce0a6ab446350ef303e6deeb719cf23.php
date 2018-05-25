@@ -1527,7 +1527,7 @@ return [
         ],
         'index' => [
             'name' => 'default',
-            'timestamp' => 1527270972,
+            'timestamp' => 1524404624,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
@@ -1576,8 +1576,8 @@ return [
                 'contentvertcubes' => [
                     'contentvertcubes-6684' => 'Content Vertical Cubes'
                 ],
-                'accordion' => [
-                    'accordion-9671' => 'Accordion'
+                'custom' => [
+                    'custom-1179' => 'Custom HTML'
                 ],
                 'contentvertcubeslong' => [
                     'contentvertcubeslong-2097' => 'Content Vertical Cubes Long'
@@ -1632,7 +1632,7 @@ return [
                     ],
                     1 => [
                         0 => 'contentvertcubes-6684 75',
-                        1 => 'accordion-9671 25'
+                        1 => 'custom-1179 25'
                     ],
                     2 => [
                         0 => 'contentvertcubeslong-2097'
@@ -1914,84 +1914,16 @@ return [
                         ]
                     ]
                 ],
-                'accordion-9671' => [
+                'custom-1179' => [
+                    'title' => 'Custom HTML',
                     'attributes' => [
-                        'mainheading' => 'Upcoming Events',
-                        'collapse' => 'true',
-                        'items' => [
-                            0 => [
-                                'title' => 'February 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 1'
-                            ],
-                            1 => [
-                                'title' => 'March 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 2'
-                            ],
-                            2 => [
-                                'title' => 'April 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 3'
-                            ],
-                            3 => [
-                                'title' => 'May 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 4'
-                            ],
-                            4 => [
-                                'title' => 'June 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 5'
-                            ],
-                            5 => [
-                                'title' => 'July 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 6'
-                            ],
-                            6 => [
-                                'title' => 'August 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 7'
-                            ],
-                            7 => [
-                                'title' => 'September 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 8'
-                            ],
-                            8 => [
-                                'title' => 'October 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 9'
-                            ],
-                            9 => [
-                                'title' => 'November 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 10'
-                            ],
-                            10 => [
-                                'title' => 'December 2018',
-                                'description' => '',
-                                'class' => '',
-                                'name' => 'Month 11'
-                            ],
-                            11 => [
-                                'title' => 'January 2019',
-                                'description' => '',
-                                'class' => '',
-                                'name' => 'Month 12'
-                            ]
-                        ]
+                        'html' => '<h2>Calender</h2>
+<ul>
+<li>March 13: MobiCom\'18 CFP</li>
+<li>June 10-15: <a href="https://www.sigmobile.org/mobisys/2018/">MobiSys\'18</a></li>
+<li>MobiCom\'18</li>
+<li>UbiComp\'18</li>
+</ul>'
                     ]
                 ],
                 'contentvertcubeslong-2097' => [

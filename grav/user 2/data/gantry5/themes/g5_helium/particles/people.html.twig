@@ -1,0 +1,172 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set particleheading %}
+    <div class="g-particle-intro">
+        {% if particle.mainheading %}
+            <h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+            <div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+        {% endif %} 
+        {% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+    </div>
+{% endset %}
+
+{% set tabsid = random() %}
+
+{% set tabsnav %}
+    {% for item in particle.items %}    
+        {% if item.personname or item.image %}
+            <li class="g-people-nav{% if item.class %} {{ item.class|e }}{% endif %}{% if (particle.justify|default('no') == 'yes') and ((particle.layout|default('left') != 'left') and (particle.layout|default('left') != 'right')) %} uk-width-1-{{ particle.justifynumber|e }}{% endif %}{% if item.position %} position-present{% endif %}{% if item.image %} image-present{% endif %}">
+                <a class="clearfix" href="">
+                    {%- if item.image -%}
+                        <div class="g-person-image">
+                            <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" {{ item.image|imagesize|raw }}>
+                        </div>
+                    {%- endif -%}
+                    {%- if item.personname or item.position -%}
+                        <div class="g-person-container">
+                            {%- if item.personname -%}
+                                <div class="g-person-name">
+                                    <h4>{{- item.personname|raw -}}</h4>
+                                </div>
+                            {%- endif -%}
+                            {%- if item.position -%}
+                                <div class="g-person-position">
+                                    {{- item.position|raw -}}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    {%- endif -%}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endset %}
+
+{% set tabscontent %}
+    {% for item in particle.items %} 
+        <li class="g-person-content{% if item.class %} {{ item.class|e }}{% endif %}">
+            {%- if item.personname -%}
+                <div class="g-person-name">
+                    <h3>{{- item.personname|raw -}}</h3>
+                </div>
+            {%- endif -%}
+            {%- if item.position -%}
+                <div class="g-person-position">
+                    {{- item.position|raw -}}
+                </div>
+            {%- endif -%}
+            {%- if item.facebook or item.twitter or item.googleplus or item.github or item.linkedin or item.dribbble or item.email or item.phone -%}
+                <div class="g-person-social">
+                    {%- if item.facebook -%}
+                        <a target="{{ item.socialtarget|default('_blank')|e }}" href="{{ item.facebook|e }}" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                    {%- endif -%}
+                    {%- if item.twitter -%}
+                        <a target="{{ item.socialtarget|default('_blank')|e }}" href="{{ item.twitter|e }}" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                    {%- endif -%}
+                    {%- if item.googleplus -%}
+                        <a target="{{ item.socialtarget|default('_blank')|e }}" href="{{ item.googleplus|e }}" aria-label="Google+"><i class="fa fa-google-plus"></i></a>
+                    {%- endif -%}
+                    {%- if item.github -%}
+                        <a target="{{ item.socialtarget|default('_blank')|e }}" href="{{ item.github|e }}" aria-label="Github"><i class="fa fa-github"></i></a>
+                    {%- endif -%}
+                    {%- if item.linkedin -%}
+                        <a target="{{ item.socialtarget|default('_blank')|e }}" href="{{ item.linkedin|e }}" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    {%- endif -%}
+                    {%- if item.dribbble -%}
+                        <a target="{{ item.socialtarget|default('_blank')|e }}" href="{{ item.dribbble|e }}" aria-label="Dribbble"><i class="fa fa-dribbble"></i></a>
+                    {%- endif -%}
+                    {%- if item.email -%}
+                        {%- if item.emailbehaviour|default("link") == "link" -%}
+                            <a target="_parent" href="mailto:{{ item.email|e }}" aria-label="Email"><i class="fa fa-envelope"></i></a>
+                        {%- else -%}
+                            <a data-uk-tooltip title="{{ item.email|e }}" aria-label="Email"><i class="fa fa-envelope"></i></a>
+                        {%- endif -%}
+                    {%- endif -%}
+                    {%- if item.phone -%}
+                        {%- if item.phonebehaviour|default("link") == "link" -%}
+                            <a href="tel:{{ item.phone|e }}" aria-label="Phone"><i class="fa fa-phone"></i></a>
+                        {%- else -%}
+                            <a data-uk-tooltip title="{{ item.phone|e }}" aria-label="Phone"><i class="fa fa-phone"></i></a>
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+            {%- if item.description -%}
+                <div class="g-person-desc">
+                    {{- item.description|raw -}}
+                </div>
+            {%- endif -%}
+            {%- if item.readmore -%}
+                <div class="g-person-button">
+                    <a class="button" href="{{ item.readmore|e }}" target="{{ item.readmoretarget|default('_parent')|e }}">
+                        {%- if item.readmoreicon -%}
+                            <i class="{{ item.readmoreicon|e }}"></i>
+                        {%- endif -%}
+                        {{- item.readmoretext|raw -}}
+                    </a>
+                </div>
+            {%- endif -%}
+        </li>
+    {% endfor %}
+{% endset %}
+
+{% set tabsnavcontainer %}
+    {% if (particle.layout|default('left') == 'left') or (particle.layout|default('left') == 'right') %}
+        <div class="uk-width-medium-1-{{ particle.tabswidth|default('3')|e }}{% if particle.layout|default('left') == 'right' %} uk-push-{{ (particle.tabswidth|default('3') - 1)|e }}-{{ particle.tabswidth|default('3')|e }}{% endif %}">
+    {% endif %}
+        <ul class="uk-tab{% if particle.layout|default('left') == 'top' %} uk-tab-top{% endif %}{% if particle.layout|default('left') == 'bottom' %} uk-tab-bottom{% endif %}{% if particle.layout|default('left') == 'left' %} uk-tab-left{% endif %}{% if particle.layout|default('left') == 'right' %} uk-tab-right{% endif %}{% if (particle.justify|default('no') == 'yes') and ((particle.layout|default('left') != 'left') and (particle.layout|default('left') != 'right')) %} uk-tab-grid{% endif %}" data-uk-tab="{connect:'#tabs-content_{{ tabsid }}', animation: '{{ particle.animation|default('fade')|e }}'}">
+            {{ tabsnav }}
+        </ul>
+    {% if (particle.layout|default('left') == 'left') or (particle.layout|default('left') == 'right') %}
+        </div>
+    {% endif %}
+{% endset %}
+
+{% set tabscontentcontainer %}
+    {% if (particle.layout|default('left') == 'left') or (particle.layout|default('left') == 'right') %}
+        <div class="uk-width-medium-{{ (particle.tabswidth|default('3') - 1)|e }}-{{ particle.tabswidth|default('3')|e }}{% if particle.layout|default('left') == 'right' %} uk-pull-1-{{ particle.tabswidth|default('3')|e }}{% endif %}">
+    {% endif %}
+        <ul id="tabs-content_{{ tabsid }}" class="tabs-content uk-switcher uk-margin {{ particle.layout|e }}">
+            {{ tabscontent }}
+        </ul>
+    {% if (particle.layout|default('left') == 'left') or (particle.layout|default('left') == 'right') %}
+        </div>
+    {% endif %}
+{% endset %}
+
+
+{% block particle %}    
+    <div class="g-people-container{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        {% if particle.mainheading or particle.introtext %}
+            {{ particleheading }}
+        {% endif %}
+
+        <div class="g-people">
+            {% if (particle.layout|default('left') == 'left') or (particle.layout|default('left') == 'right') %}
+                <div class="uk-grid">
+            {% endif %}
+
+            {% if particle.layout|default('left') == 'bottom' %}
+                {{ tabscontentcontainer }}
+                {{ tabsnavcontainer }}
+            {% else %}
+                {{ tabsnavcontainer }}
+                {{ tabscontentcontainer }}
+            {% endif %}
+
+            {% if (particle.layout|default('left') == 'left') or (particle.layout|default('left') == 'right') %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

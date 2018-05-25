@@ -1,0 +1,147 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Content Finder #}
+{% set articles = grav.page.collection({
+    items: {'@taxonomy.category': filter.categories|split(' ')},
+    order: {by: sort.orderby, dir: sort.ordering},
+    url_taxonomy_filters: false
+}, false).slice(limit.start, limit.total) %}
+
+{% block stylesheets %}
+    {% if particle.enabled %}
+        {{ parent() }}
+        <style type="text/css">
+            .uk-accordion {display: block !important;}
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% set particleheading %}
+    <div class="g-particle-intro">
+        {% if particle.mainheading %}
+            <h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+            <div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+        {% endif %} 
+        {% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+    </div>
+{% endset %}
+
+{% block particle %}
+    <div class="g-accordion{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        {% if particle.mainheading or particle.introtext %}
+            {{ particleheading }}
+        {% endif %}
+        
+        <div class="uk-accordion" data-uk-accordion="{collapse: {{ particle.collapse|default("true")|e }}, showfirst: {{ particle.showfirst|default("true")|e }}}">
+            {% for article in articles %}
+                <div class="g-accordion-item">
+                    <h3 class="uk-accordion-title">
+                        {{ (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}
+                    </h3>
+                    <div class="uk-accordion-content">
+                        <div class="g-grid">
+                            <div class="g-block">
+                                {% if display.image.enabled and (article.header.image.summary.enabled or article.header.image.text.enabled) %}
+                                    {%- if display.image.enabled == 'intro' -%}
+                                        {% set file = article.header.image.summary.enabled|defined(false) ? (article.header.image.summary.file ?: true) %}
+                                    {% elseif display.image.enabled == 'full' %}
+                                        {% set file = article.header.image.text.enabled|defined(false) ? (article.header.image.text.file ?: true) %}
+                                    {% endif %}
+
+                                    {% set imageinner = file is same as(true) ? article.media.images|first : (file ? article.media.images[file]) %}
+
+                                    <div class="g-accordion-image">
+                                        {% if particle.lightbox|default('disable') == 'enable' %}
+                                            <a href="{{ url(imageinner.url, false, 0) }}" data-uk-lightbox class="uk-overlay uk-overlay-hover">
+                                            <span class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></span>
+                                        {% endif %}
+                                            <img src="{{ url(imageinner.url) }}" {{ imageinner.url|imagesize|raw }} alt="{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}" />
+                                        {% if particle.lightbox|default('disable') == 'enable' %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                {% if display.text.type or display.read_more.enabled %}
+                                    {% set article_text = display.text.type == 'intro' ? article.summary : article.content %}
+                                    <div class="g-accordion-desc">
+                                        {% if display.text.formatting == 'text' %}
+                                            {{ article_text|truncate_text(display.text.limit)|raw }}
+                                        {% else %}
+                                            {{ gantry.platform.filter(article_text)|truncate_html(display.text.limit)|html|raw }}
+                                        {% endif %}
+                                        {% if display.read_more.enabled %}
+                                            <span class="g-article-read-more">
+                                                <a href="{{ article.url }}">
+                                                    {{ display.read_more.label|default('Read More') }}
+                                                </a>
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                {% if display.date.enabled or display.author.enabled or display.category.enabled %}
+                                    <div class="g-article-details">
+                                        {% if display.date.enabled %}
+                                            <span class="g-article-date">
+                                                {%- if display.date.enabled == 'published' -%}
+                                                    <i class="fa fa-clock-o"></i>{{- article.publishDate()|date(display.date.format) -}}
+                                                {%- elseif display.date.enabled == 'modified' -%}
+                                                    <i class="fa fa-clock-o"></i>{{- article.modified|date(display.date.format) -}}
+                                                {%- else -%}
+                                                    <i class="fa fa-clock-o"></i>{{- article.date|date(display.date.format) -}}
+                                                {%- endif -%}
+                                            </span>
+                                        {% endif %}
+
+                                        {% if display.author.enabled and (article.header.author.username or article.header.author.name or article.header.author.alias) %}
+                                            {% if article.header.author.name %}
+                                                {% set author = article.header.author.name %}
+                                            {% elseif article.header.author.alias %}
+                                                {% set author = article.header.author.alias %}
+                                            {% else %}
+                                                {% set author = article.header.author.username %}
+                                            {% endif %}
+
+                                            <span class="g-article-author">
+                                                <i class="fa fa-user"></i>{{- author -}}
+                                            </span>
+                                        {% endif %}
+
+                                        {% if display.category.enabled %}
+                                            {% set category_link = display.category.route == true %}
+                                            <span class="g-article-category">
+                                                {% for category in article.taxonomy.category %}
+                                                    {% if category_link %}
+                                                        <a href="{{ base_url ~ display.category.route }}">
+                                                            <i class="fa fa-folder-open"></i>{{- category|raw -}}
+                                                        </a>
+                                                    {% else %}
+                                                        <i class="fa fa-folder-open"></i>{{- category|raw -}}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

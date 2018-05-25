@@ -19,7 +19,7 @@ layout:
       - system-content-3756
     -
       - 'contentvertcubes-6684 75'
-      - 'accordion-9671 25'
+      - 'custom-1179 25'
     -
       - contentvertcubeslong-2097
   /features/: {  }
@@ -211,71 +211,10 @@ content:
           buttonclass: ''
           buttontarget: _self
           name: 'New item'
-  accordion-9671:
+  custom-1179:
+    title: 'Custom HTML'
     attributes:
-      mainheading: 'Upcoming Events'
-      collapse: 'true'
-      items:
-        -
-          title: 'February 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 1'
-        -
-          title: 'March 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 2'
-        -
-          title: 'April 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 3'
-        -
-          title: 'May 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 4'
-        -
-          title: 'June 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 5'
-        -
-          title: 'July 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 6'
-        -
-          title: 'August 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 7'
-        -
-          title: 'September 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 8'
-        -
-          title: 'October 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 9'
-        -
-          title: 'November 2018'
-          description: hewwo
-          class: ''
-          name: 'Month 10'
-        -
-          title: 'December 2018'
-          description: ''
-          class: ''
-          name: 'Month 11'
-        -
-          title: 'January 2019'
-          description: ''
-          class: ''
-          name: 'Month 12'
+      html: "<h2>Calender</h2>\n<ul>\n<li>March 13: MobiCom'18 CFP</li>\n<li>June 10-15: <a href=\"https://www.sigmobile.org/mobisys/2018/\">MobiSys'18</a></li>\n<li>MobiCom'18</li>\n<li>UbiComp'18</li>\n</ul>"
   contentvertcubeslong-2097:
     title: 'Content Vertical Cubes Long'
     attributes:

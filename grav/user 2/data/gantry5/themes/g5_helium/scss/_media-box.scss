@@ -1,0 +1,77 @@
+// Set the variable defaults in case they are missing in the template
+$base-background-color: #ffffff !default;
+
+.g-media-box {
+	.g-grid {
+		margin-bottom: $content-margin*2;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.g-block {
+			margin-right: $content-margin*2;
+			@include breakpoint(mobile-only) {
+				margin-right: 0;
+				margin-bottom: $content-margin*2;
+			}
+			&:last-child {
+				margin-right: 0;
+				@include breakpoint(mobile-only) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	
+	.g-media-box-item {
+		.g-media-box-content {
+			background: $base-background-color;
+			padding: 2rem;
+			border: 1px solid $base-border-color;
+			
+			.g-media-box-links {
+				.button-media {
+					color: $base-text-color;
+					background: transparent;
+					border: 1px solid $base-border-color;
+					width: 3rem;
+					height: 3rem;
+					line-height: 3rem;
+					text-align: center;
+					cursor: pointer;
+					display: inline-block;
+					@include transition(0.2s);
+					&:hover {
+						color: $white;
+						background: $accent-color-1;
+						border-color: $accent-color-1;
+					}
+					@include breakpoint(mobile-only) {
+						width: 2.5rem;
+						height: 2.5rem;
+						line-height: 1.5rem;
+						padding: 0.5rem;
+					}
+				}
+				.g-media-box-play {
+					position: absolute;
+					margin-top: -2.5rem;
+				}
+				.g-item-text {
+					visibility: hidden;
+					position: absolute;
+					width: 0;
+					height: 0;
+				}
+			}
+			
+			.g-media-box-desc {
+				margin: 1.5rem 0;
+				padding-bottom: 1.5rem;
+				border-bottom: 1px solid $base-border-color;
+			}
+			.g-media-box-special1, .g-media-box-special2 {
+				margin: 0;
+			}
+		}
+	}
+}

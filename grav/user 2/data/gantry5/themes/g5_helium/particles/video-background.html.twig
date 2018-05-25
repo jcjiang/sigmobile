@@ -1,0 +1,35 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+    {% if particle.enabled %}
+        {{ parent() }}
+        <style type="text/css">
+            {% for item in particle.items %}
+                #{{ item.sectionid|e }} .YTPOverlay {
+                    background-color: {{ item.overlay|default("rgba(3, 61, 90, 0.6)") }};
+                }
+            {% endfor %}
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+    {% if particle.enabled %}
+        {% do gantry.load('jquery') %}
+        {{ parent() }}
+        <script src="{{ url('gantry-theme://js/video-background.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            {% for item in particle.items %}
+                jQuery(function($) {
+                    if( $('#{{ item.sectionid|e }}').length ) {
+                        var data = "{containment:'#{{ item.sectionid|e }}', videoURL: '{{ item.videoURL|e }}', mute: {{ item.mute|default("true")|e }}, vol: {{ item.volume|default(50)|e }}, startAt: {{ item.startat|default(0)|e }}, stopAt: {{ item.stopat|default(0)|e }}, loop: {{ item.loop|default(999)|e }}, quality: '{{ item.quality|default("default")|e }}', opacity: '{{ item.opacity|default(1)|e }}', autoPlay: {{ item.autoplay|default("true")|e }}, stopMovieOnBlur: {{ item.blur|default("false")|e }}, showControls: {{ item.controls|default("false")|e }}, showYTLogo: {{ item.logo|default("false")|e }}}";
+                        var $div = $('<div />').appendTo('body');
+                        $div.attr('class', 'g-video-container');
+                        $div.attr('data-property',data);
+                        $(".g-video-container").YTPlayer();
+                    }
+                });
+            {% endfor %}
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,6 @@
+enabled: true
+css_files:
+  -
+    path: /user/themes/g5_helium/scss/configuration/_custom.scss
+    priority: 0
+css_inline: "blockquote {\r\n\tborder-left: 2px solid #6f6f6f;\r\n\r\n}"

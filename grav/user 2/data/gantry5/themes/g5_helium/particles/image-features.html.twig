@@ -1,0 +1,123 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+	{% for attributes in particle.extra %}
+		{% for key, value in attributes %}
+			{% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+
+{% set particleheading %}
+	<div class="g-particle-intro">
+		{% if particle.mainheading %}
+			<h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+			<div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+		{% endif %}	
+		{% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+	</div>
+{% endset %}
+
+{% set imagefeaturesitems %}
+	{% for row in particle.items|batch(particle.columns|default('2')|e) %}
+		<div class="g-grid">
+			{% for item in row %}
+				{% set attr_extra_item = '' %}
+				{% for extra in item.extra %}
+					{% set attr_extra_item = attr_extra_item ~ ' ' ~ extra|keys|first|e ~ '="' ~ extra|values|first|e('html_attr') ~ '"' %}
+				{% endfor %}
+
+				{% set image %}
+					{% if item.image %}
+						<div class="g-block size-{{ item.imagewidth|default(33)|e }} g-image-features-image{% if item.link %} uk-overlay uk-overlay-hover{% endif %}">
+							{% if item.link %}
+								<a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+									<span class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></span>
+							{% endif %}
+								<img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" {{ item.image|imagesize|raw }}>
+							{% if item.link %}
+								</a>
+							{% endif %}
+						</div>
+					{% endif %}
+				{% endset %}
+
+				{% set content %}
+					{% if item.title or item.description %}
+						<div class="g-block g-image-features-content">
+							{% if item.title %}
+								<h4 class="g-image-features-title">
+									{%- if item.link -%}
+										<a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+									{%- endif -%}
+										{{- item.title|raw -}}
+									{%- if item.link -%}
+										</a>
+									{%- endif -%}
+								</h4>
+							{% endif %}
+
+							{% if item.description %}
+								<div class="g-image-features-desc">
+									{{- item.description|raw -}}
+								</div>
+							{% endif %}
+
+							{% if item.specialtext or item.bottomlink %}
+								<div class="g-bottom-info clearfix{% if item.specialtext == false %} no-special{% endif %}">
+									{% if item.specialtext %}
+										<div class="g-image-feature-special">
+											{%- if item.icon -%}
+												<i class="{{ item.icon|raw }}"></i>
+											{%- endif -%}
+												{{- item.specialtext|raw -}}
+										</div>
+									{% endif %}
+
+									{% if item.bottomlink %}
+										<div class="g-image-features-link">
+											<a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+												{{- item.bottomlink|raw -}}<i class="fa fa-long-arrow-right"></i>
+											</a>
+										</div>
+									{% endif %}
+								</div>
+							{% endif %}
+						</div>
+					{% endif %}
+				{% endset %}
+
+				<div class="g-block{% if item.class %} {{ item.class|e }}{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+					<div class="g-content">
+						<div class="g-image-features-item layout-{{ item.layout|default('left')|e }}">
+							<div class="g-grid">
+								{% if item.layout|default('left') == 'left' %}
+									{{ image }}
+									{{ content }}
+								{% else %}
+									{{ content }}
+									{{ image }}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+{% endset %}
+
+{% set featurecontent %}
+
+{% endset %}
+
+{% block particle %}
+
+	<div class="g-image-features{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+		{% if particle.mainheading or particle.introtext %}
+			{{ particleheading }}
+		{% endif %}
+		{{ imagefeaturesitems }}
+	</div>
+{% endblock %}

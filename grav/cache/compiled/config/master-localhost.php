@@ -9,6 +9,10 @@ return [
                 'file' => 'user/config/media.yaml',
                 'modified' => 1524404080
             ],
+            'plugins/custom-css' => [
+                'file' => 'user/config/plugins/custom-css.yaml',
+                'modified' => 1527268835
+            ],
             'security' => [
                 'file' => 'user/config/security.yaml',
                 'modified' => 1524404080
@@ -29,19 +33,19 @@ return [
         'system/config' => [
             'media' => [
                 'file' => 'system/config/media.yaml',
-                'modified' => 1524404082
+                'modified' => 1527270397
             ],
             'site' => [
                 'file' => 'system/config/site.yaml',
-                'modified' => 1524404082
+                'modified' => 1527270397
             ],
             'streams' => [
                 'file' => 'system/config/streams.yaml',
-                'modified' => 1524404082
+                'modified' => 1527270397
             ],
             'system' => [
                 'file' => 'system/config/system.yaml',
-                'modified' => 1524404082
+                'modified' => 1527270397
             ]
         ],
         'user/plugins' => [
@@ -52,6 +56,10 @@ return [
             'plugins/bootstrapper' => [
                 'file' => 'user/plugins/bootstrapper/bootstrapper.yaml',
                 'modified' => 1524404102
+            ],
+            'plugins/custom-css' => [
+                'file' => 'user/plugins/custom-css/custom-css.yaml',
+                'modified' => 1527267294
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/email.yaml',
@@ -152,6 +160,19 @@ return [
                 'load_core_css' => true,
                 'load_theme_css' => true,
                 'load_core_js' => true
+            ],
+            'custom-css' => [
+                'enabled' => true,
+                'css_files' => [
+                    0 => [
+                        'path' => '/user/themes/g5_helium/scss/configuration/_custom.scss',
+                        'priority' => 0
+                    ]
+                ],
+                'css_inline' => 'blockquote {
+	border-left: 2px solid #6f6f6f;
+
+}'
             ],
             'email' => [
                 'enabled' => true,
