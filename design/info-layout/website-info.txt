@@ -1,0 +1,98 @@
+== 1. SIGMobile: logo 
+one sentence description of the group in the banner
+a more detailed description pops up when the mouse cursor hovers on the icon
+
+== 2. Top menu items:
+* About
+-- About SIGMobile
+(goals, what we do)
+-- History
+(can be merged to About SIGMobile page if necessary?)
+-- Bylaws (or Policies?)
+-- Committees
+(executive committee, leadership team, previous committees/teams)
+-- Meetings & Reports
+(annual meetings and reports)
+-- Contact 
+(https://www.sigmobile.org/contact/)
+
+* Events 
+-- Calendar 
+-- Conferences
+(MobiCom, MobiSys, SenSys, UbiComp, MobiHoc
+for each conference, list prior ones like this https://www.sigmobile.org/mobicom/, so that it's easy to search)
+-- Workshops
+(HotMobile)
+-- In-Cooperation Events
+
+* Publications
+-- Open Access Conference Proceedings 
+(summarized list of conference proceedings links, example: https://sigchi.org/publications/conference-proceedings/)
+-- ACM Digital Library 
+(https://dl.acm.org/sig.cfm?id=SP941)
+-- GetMobile Magazine 
+(https://www.sigmobile.org/pubs/getmobile/)
+-- Quarterly Newsletters
+-- Related Journals? (e.g., IMWUT, TMC?)
+
+* Awards
+-- Outstanding Contribution Award
+-- Rockstar Award
+-- Research Highlights
+-- Test-of-Time Paper
+-- Best Paper Awards
+-- PhD Thesis Award
+-- Distinguished Service 
+
+* Get Involved
+-- Membership 
+(benefits, activities, cost to join, and online application)
+-- Sponsorship 
+(https://www.sigmobile.org/events/how.html)
+-- Local Chapters
+(https://www.sigmobile.org/chapters/)
+-- Funding
+(can be cut if we do not have anything here)
+-- Mailing Lists
+(SIGMOBILE-MEMBERS list, SIGMOBILE-INTEREST@LISTSERV.ACM.ORG, and more if any. how to subscribe and unsubscribe)
+
+* Social (this menu item can be replaced by showing the icons below or above the top menu, see example: https://sigchi.org/, which has these icons on the top)
+-- YouTube Channel
+-- Facebook
+-- Twitter 
+-- LinkedIn
+
+== 3. Carousel Images
+Promote YouTube channel; 
+Photos from latest conferences;
+GetMobile cover photos; 
+Photos from award winning research prototypes or award-winning researchers;
+Any more ideas?
+
+
+== 4. News List
+Latest announcements: 
+ongoing discussions, awards, call for nominations, leadership change, update of talks in YouTube channels, etc.
+Or just include the Twitter feed here.
+
+== 5. Calendar 
+Upcoming conferences, CFP deadlines, nomination deadlines, etc.
+
+== 6. Featured Research
+Pictures, descriptions of highlighted papers, best papers, etc.
+
+== 7. Videos 
+embedded videos of the best videos from MobiCom, MobiSys, etc.
+
+== 8. Bottom banner
+Join SIGMobile today;
+Social channel icons;
+Leave feedback/comment? participate in ongoing discussions.
+
+
+
+
+
+
+
+

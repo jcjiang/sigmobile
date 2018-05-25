@@ -1,0 +1,321 @@
+// Set the variable defaults in case they are missing in the template
+$fontsizes-body-font-size: 0.9rem !default;
+
+.g-gadgets {
+	.g-gadget-buttons {
+		position: fixed;
+		top: 155px;
+		left: 0;
+		background: #ffffff;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+		z-index: 999;
+		> div {
+			> a {
+				padding: 14px;
+				display: block;
+				line-height: 1;
+				border-bottom: 1px solid $base-border-color;
+				text-align: center;
+				color: $base-text-color;
+				@include transition(all 0.2s);
+				&:hover {
+					color: #ffffff;
+					background: $accent-color-1;
+				}
+			}
+			&:last-child {
+				> a {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+	.g-gadget-offcanvas {
+		.offcanvas-toggle-particle {
+			cursor: pointer;
+		}
+	}
+
+	// Modal Login
+	.login-text-present {
+		margin-right: 10px;
+	}
+	#modal-login {
+		&.uk-open {
+			.uk-close {
+				@include transform(scale(1));
+			}
+		}
+		.uk-modal-dialog {
+			padding: 0;
+			h3 {
+				margin: 0;
+				margin-bottom: 10px;
+				padding: 10px 25px;
+				background: #2e373c;
+				color: #ffffff;
+				text-transform: uppercase;
+				font-size: 1rem;
+			}
+		}
+		// Joomla
+		#login-form {
+			padding: 25px;
+			input {
+				width: 100%;
+				max-width: 100%;
+				border-radius: 0;
+			}
+			.pretext {
+				p {
+					margin-top: 0;
+				}
+			}
+			.posttext {
+				p {
+					margin-bottom: 0;
+				}
+			}
+			.control-group {
+				margin-bottom: 15px;
+			}
+			.input-prepend {
+				.add-on {
+					display: none;
+				}
+			}
+			#modlgn-username, #modlgn-passwd {
+				border: 1px solid darken($base-border-color, 5%);
+				padding: 10px;
+				&:focus {
+					border-color: $accent-color-1;
+				}
+			}
+		}
+		#form-login-remember {
+			display: inline-block;
+			margin: 5px 0 15px;
+			input {
+				margin: 2px 5px 0 0;
+				width: auto;
+			}
+			.control-label {
+				
+			}
+		}
+		.userdata {
+			> ul {
+				li {
+					line-height: 1.5;
+				}
+			}
+		}
+		.hide-links {
+			.userdata {
+				> ul {
+					display: none;
+				}
+			}
+		}
+		.login-greeting {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		.logout-button {
+			text-align: center;
+		}
+		// Wordpress
+		#loginform {
+			padding: 25px;
+			.login-data {
+				padding: 0;
+				margin: 10px 0 0 0;
+			}
+			.login-username, .login-password, .login-remember, .login-submit {
+				margin-top: 0;
+			}
+			.login-submit {
+				margin-bottom: 0;
+			}
+			input {
+				border-radius: 0;
+			}
+			#user_login, #user_pass {
+				border: 1px solid darken($base-border-color, 5%);
+				&:focus {
+					border-color: $accent-color-1;
+				}
+			}
+			.login-extra {
+				margin: 15px 0 0 0;
+				list-style: none;
+				li {
+					i {
+						margin-right: 7px;
+					}
+				}
+			}
+			.logout-button {
+				.button {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.hide-links {
+			.login-extra {
+				display: none;
+			}
+		}
+	}
+
+	// Modal Search
+	#modal-search {
+		&.uk-open {
+			.uk-modal-dialog {
+				@include transform(scale(1));
+			}
+			.uk-close {
+				@include transform(scale(1));
+			}
+		}
+		.uk-modal-dialog {
+			padding: 0;
+			border-radius: 0;
+			width: 455px;
+			background: none;
+			box-shadow: none;
+			@include transform(scale(0));
+			// Joomla
+			.search {
+				form {
+					margin-bottom: 0;
+				}
+				input {
+					margin-bottom: 0;
+					border: none;
+					font-size: 2.3rem;
+					width: 455px;
+					color: #ffffff;
+					text-align: center;
+					background: none;
+					padding: 20px;
+					border-radius: 0;
+					box-shadow: 0 3px 0 0 rgba(255, 255, 255, 0.3);
+					@include placeholder {
+						color: #ffffff;
+						opacity: 1;
+					}
+					@include breakpoint(mobile-only) {
+						width: 100%;
+						padding: 20px 0;
+					}
+					&:focus {
+						box-shadow: 0 3px 0 0 rgba(255, 255, 255, 1);
+					}
+				}
+			}
+			// Wordpress
+			.search-form {
+				.search-field {
+					border: none;
+					font-size: 2.3rem;
+					width: 455px;
+					color: #ffffff;
+					text-align: center;
+					background: none;
+					padding: 20px;
+					border-radius: 0;
+					box-shadow: 0 3px 0 0 rgba(255, 255, 255, 0.3);
+					@include placeholder {
+						color: #ffffff;
+						opacity: 1;
+					}
+					@include breakpoint(mobile-only) {
+						width: 100%;
+						padding: 20px 0;
+					}
+					&:focus {
+						box-shadow: 0 3px 0 0 rgba(255, 255, 255, 1);
+					}
+				}
+				label {
+					margin-bottom: 0;
+				}
+				.search-submit {
+					display: none;
+				}
+			}
+		}
+	}
+	// Get in Touch
+	#g-touch {
+		&.uk-open {
+			.uk-close {
+				@include transform(scale(1));
+			}
+		}
+		.uk-modal-dialog {
+			padding: 0;
+			border-radius: 0;
+			color: $base-text-color;
+			[id*="g-map-"] {
+				max-width: 100% !important;
+			}
+		}
+		.g-block {
+			&:last-child {
+				.g-touch-item {
+					border: none;
+				}
+			}
+		}
+		.g-touch-item {
+			text-align: center;
+			padding: 25px 10px;
+			border-right: 1px solid $base-border-color;
+			font-weight: bold;
+			color: $base-text-color;
+			font-size: $fontsizes-body-font-size;
+			height: 100%;
+			@include display(flex);
+			@include align-items(center);
+			@include justify-content(center);
+			@include breakpoint(mobile-only) {
+				border-right: none;
+				border-bottom: 1px solid $base-border-color;
+				padding: 15px 10px;
+			}
+			a {
+				color: $base-text-color;
+			}
+			.g-touch-item-icon {
+				margin-right: 9px;
+			}
+		}
+	}
+	// Close button
+	.uk-close {
+		color: #ffffff !important;
+		opacity: 1;
+		font-size: 22px;
+		top: 35px;
+		right: 35px;
+		position: absolute;
+		@include transform(scale(0));
+		@include transition(all 0.3s);
+		&:hover {
+			@include transform(rotate(90deg) !important);
+			color: $accent-color-1 !important;
+		}
+	}
+	// Joomla class for the Search
+	.element-invisible {
+		border: 0 none;
+		height: 1px;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+}

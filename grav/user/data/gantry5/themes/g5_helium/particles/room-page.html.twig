@@ -1,0 +1,98 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+	{% for attributes in particle.extra %}
+		{% for key, value in attributes %}
+			{% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+
+{% block particle %}
+	<div class="g-room-page{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+		{% if particle.mainimage %}
+			<div class="g-room-main-image">
+				<img alt="{{ particle.mainalt|e }}" src="{{ url(particle.mainimage) }}" {{ particle.mainimage|imagesize|raw }}>
+			</div>
+		{% endif %}
+
+		{% if particle.galleryitems %}
+			<div class="g-room-gallery">
+				<div class="g-grid">
+					{% for item in particle.galleryitems %}
+						<a class="g-room-image-container uk-overlay uk-overlay-hover" href="{{ url(item.image, false, 0) }}" {% if item.title %}title="{{ item.title|e }}"{% endif %} data-uk-lightbox="{group:'room-page-particle'}">
+							<span class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></span>				
+							<img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" {{ item.image|imagesize|raw }}>
+						</a>							
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+
+		{% if particle.roomtitle or particle.startfrom or particle.startfromvalue %}
+			<div class="g-room-tile-container clearfix">
+				{% if particle.roomtitle %}
+					<h3 class="g-room-title">
+						{{- particle.roomtitle|e -}}
+					</h3>
+				{% endif %}
+
+				{% if particle.startfrom or particle.startfromvalue %}
+					<div class="g-info-price">
+						{% if particle.startfrom %}
+							<span class="title-startfrom">{{ particle.startfrom|e }}</span>
+						{% endif %}
+
+						{% if particle.startfromvalue %}
+							<span class="title-startfromvalue">{{ particle.startfromvalue|e }}</span>
+						{% endif %}	
+					</div>
+				{% endif %}	
+			</div>
+		{% endif %}
+
+		{% if particle.featuresitems %}
+			<div class="g-room-features">
+				{% for row in particle.featuresitems|batch(particle.featurescolumns|default('2')|e) %}
+					<div class="g-grid">
+						{% for item in row %}
+							<div class="g-block{% if item.class %} {{ item.class|e }}{% endif %}">
+								<div class="g-room-features-item">
+									{% if item.icon %}
+										<span class="g-item-icon {{ item.icon|e }}"></span>
+									{% endif %}
+
+									{% if item.title %}
+										<span class="g-item-title">{{ item.title|e }}</span>
+									{% endif %}
+
+									{% if item.value %}
+										<span class="g-item-value">{{ item.value|e }}</span>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		{% if particle.roomdescription %}
+			<div class="g-room-desc">
+				{{- particle.roomdescription|raw -}}
+			</div>
+		{% endif %}
+
+		{% if particle.link %}
+			<div class="g-room-link-container">
+				<a class="button g-room-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_blank')|e }}">
+					{%- if particle.buttonicon -%}
+						<i class="{{ particle.buttonicon|e }}"></i>
+					{%- endif -%}
+					{{- particle.buttontext|raw -}}
+				</a>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

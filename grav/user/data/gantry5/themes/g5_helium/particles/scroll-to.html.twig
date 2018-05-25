@@ -1,0 +1,21 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% block particle %}
+    <div class="g-scroll-to{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        <a href="{% if particle.link %}#{{ particle.link|e }}{% endif %}" data-uk-smooth-scroll="{offset: {{ particle.smoothscrolloffset|default(0)|e }}}">
+            {%- if particle.icon -%}
+                <span class="{{ particle.icon|e }}"></span>
+            {%- endif -%}
+            {{- particle.text|raw -}}
+        </a>
+    </div>
+{% endblock %}

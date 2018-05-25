@@ -1,0 +1,27 @@
+enabled: '1'
+class: ''
+title: ''
+nav: disable
+dots: enable
+autoplay: disable
+autoplaySpeed: ''
+imageOverlay: enable
+items:
+  -
+    image: 'gantry-media://carousle/iStock-477042150copy.jpg'
+    title: ''
+    desc: 'The ACM Special Interest Group on Mobility of Systems, Users, Data, and Computing'
+    link: ''
+    linktext: 'The ACM Special Interest Group on Mobility of Systems, Users, Data, and Computing'
+    buttonclass: button-outline
+    name: 'New item'
+  -
+    image: 'gantry-media://carousle/iStock-477042150copy.jpg'
+    title: ''
+    desc: 'The ACM Special Interest Group on Mobility of Systems, Users, Data, and Computing'
+    link: ''
+    linktext: 'The ACM Special Interest Group on Mobility of Systems, Users, Data, and Computing'
+    buttonclass: button-outline
+    name: 'New item'
+  -
+    name: 'New item'

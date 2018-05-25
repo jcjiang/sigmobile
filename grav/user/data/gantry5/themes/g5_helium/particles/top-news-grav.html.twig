@@ -1,0 +1,233 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set topnewsid = random() %}
+
+{% block stylesheets %}
+    {% if particle.enabled %}
+        {{ parent() }}
+        <style type="text/css">
+            {% if particle.layout|default("layout1") == "layout1" %}
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-main, .g-inline_{{ topnewsid }}.style2 .g-top-news-main, .g-inline_{{ topnewsid }}.style2 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-main, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary.g-tn2 {
+                    width: 50%;
+                }
+
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary {
+                    width: 25%;
+                }
+            {% endif %}
+
+            {% if particle.layout|default("layout1") == "layout2" %}
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-main, .g-inline_{{ topnewsid }}.style2 .g-top-news-main, .g-inline_{{ topnewsid }}.style3 .g-top-news-main {
+                    width: 75%;
+                }
+
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary {
+                    width: 12.5%;
+                }
+
+                .g-inline_{{ topnewsid }}.style2 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary.g-tn2 {
+                    width: 25%;
+                }
+            {% endif %}
+
+            {% if particle.layout|default("layout1") == "layout3" %}
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-main, .g-inline_{{ topnewsid }}.style2 .g-top-news-main, .g-inline_{{ topnewsid }}.style3 .g-top-news-main {
+                    width: 66.6666%;
+                }
+
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary {
+                    width: 16.6666%;
+                }
+
+                .g-inline_{{ topnewsid }}.style2 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary.g-tn2 {
+                    width: 33.3333%;
+                }
+            {% endif %}
+
+            {% if particle.layout|default("layout1") == "layout4" %}
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-main, .g-inline_{{ topnewsid }}.style2 .g-top-news-main, .g-inline_{{ topnewsid }}.style3 .g-top-news-main {
+                    width: 25%;
+                }
+
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary {
+                    width: 37.5%;
+                }
+
+                .g-inline_{{ topnewsid }}.style2 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary.g-tn2 {
+                    width: 75%;
+                }
+            {% endif %}
+
+            {% if particle.layout|default("layout1") == "layout5" %}
+                .g-inline_{{ topnewsid }}.style1 .g-top-news-main, .g-inline_{{ topnewsid }}.style1 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style2 .g-top-news-main, .g-inline_{{ topnewsid }}.style3 .g-top-news-main, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary {
+                    width: 33.3333%;
+                }
+
+                .g-inline_{{ topnewsid }}.style2 .g-top-news-secondary, .g-inline_{{ topnewsid }}.style3 .g-top-news-secondary.g-tn2 {
+                    width: 66.6666%;
+                }
+            {% endif %}
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{% set limittotal %}
+    {% if particle.style|default("style1") == "style1" %}5{% endif %}
+    {% if particle.style|default("style1") == "style2" %}3{% endif %}
+    {% if particle.style|default("style1") == "style3" %}4{% endif %}
+{% endset %}
+
+{# Content Finder #}
+{% set articles = grav.page.collection({
+    items: {'@taxonomy.category': filter.categories|split(' ')},
+    order: {by: sort.orderby, dir: sort.ordering},
+    url_taxonomy_filters: false
+}, false).slice(limit.start, limittotal|e) %}
+
+{% set particleheading %}
+    <div class="g-particle-intro">
+        {% if particle.mainheading %}
+            <h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+            <div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+        {% endif %} 
+        {% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+    </div>
+{% endset %}
+
+{% block particle %}
+    <div class="g-top-news {{ particle.style|default("style1")|e }} g-inline_{{ topnewsid }}{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}{% if particle.gutter|default('disabled') == 'enabled' %} gutter-enabled{% else %} gutter-disabled{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        {% if particle.mainheading or particle.introtext %}
+            {{ particleheading }}
+        {% endif %}
+        
+        <div class="g-top-news-container clearfix">
+
+            {% set article_number = 0 %}
+
+            {% for article in articles %}
+                {% set articleimage %}
+                    {%- if display.image.enabled == 'intro' -%}
+                        {% set file = article.header.image.summary.enabled|defined(false) ? (article.header.image.summary.file ?: true) %}
+                    {% elseif display.image.enabled == 'full' %}
+                        {% set file = article.header.image.text.enabled|defined(false) ? (article.header.image.text.file ?: true) %}
+                    {% endif %}
+
+                    {% set image = file is same as(true) ? article.media.images|first : (file ? article.media.images[file]) %}
+
+                    {% if image %}
+                        background-image: url({{ image.url }})
+                    {% endif %}
+                {% endset %}
+
+                {% set article_number = article_number + 1 %}
+
+                {% set articleclass %}
+                    {%- if loop.first -%}
+                        g-top-news-main g-tn{{ article_number }}
+                    {%- else -%}
+                        g-top-news-secondary g-tn{{ article_number }}
+                    {%- endif -%}
+                {% endset %}
+
+                {% set articleheight %}
+                    {%- if loop.first -%}
+                        height: {{ particle.height|default('450')|e }}px
+                    {%- else -%}
+                        height: {{ particle.height|default('450')|e // 2 }}px
+                    {%- endif -%}
+                {% endset %}
+
+                {% set category_link = display.category.route == true %}
+                {% set article_text = display.text.type == 'intro' ? article.summary : article.content %}
+
+                <div class="g-top-news-item {{ articleclass }}{% if particle.gutter|default('disabled') == 'enabled' %} g-content{% endif %}" style="{{ articleheight }};">
+                    <div class="g-top-news-item-inner" style="{{ articleimage }};">
+                        <div class="g-top-news-item-image">
+                            <a href="{{ article.url }}" aria-label="{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}"></a>
+                        </div>
+                        <div class="g-top-news-item-info">
+                            {% if display.category.enabled %}
+                                <span class="g-article-category">
+                                    {% for category in article.taxonomy.category %}
+                                        {% if category_link %}
+                                            <a href="{{ base_url ~ display.category.route }}">
+                                                <span class="g-cat-{{ category|raw|lower|hyphenize }}">{{ category|raw }}</span>
+                                            </a>
+                                        {% else %}
+                                            <span class="g-cat-{{ category|raw|lower|hyphenize }}">{{ category|raw }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </span>                                      
+                            {% endif %}
+
+                            {% if display.title.enabled %}
+                                <h4 class="g-article-title">
+                                    <a href="{{ article.url }}">
+                                        {{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}
+                                    </a>
+                                </h4>
+                            {% endif %}
+
+                            {% if display.date.enabled or (display.author.enabled and (article.header.author.username or article.header.author.name or article.header.author.alias)) %}
+                                <div class="g-article-details">
+                                    {% if display.date.enabled %}
+                                        <span class="g-article-date">
+                                            {%- if display.date.enabled == 'published' -%}
+                                                <i class="fa fa-clock-o"></i>{{- article.publishDate()|date(display.date.format) -}}
+                                            {%- elseif display.date.enabled == 'modified' -%}
+                                                <i class="fa fa-clock-o"></i>{{- article.modified|date(display.date.format) -}}
+                                            {%- else -%}
+                                                <i class="fa fa-clock-o"></i>{{- article.date|date(display.date.format) -}}
+                                            {%- endif -%}
+                                        </span>
+                                    {% endif %}
+
+                                    {% if display.author.enabled and (article.header.author.username or article.header.author.name or article.header.author.alias) %}
+                                        {% if article.header.author.name %}
+                                            {% set author = article.header.author.name %}
+                                        {% elseif article.header.author.alias %}
+                                            {% set author = article.header.author.alias %}
+                                        {% else %}
+                                            {% set author = article.header.author.username %}
+                                        {% endif %}
+
+                                        <span class="g-article-author">
+                                            <i class="fa fa-user"></i>{{- author -}}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% if display.text.type %}
+                                <div class="g-article-text">
+                                    {%- if display.text.formatting == 'text' -%}
+                                        {{ article_text|truncate_text(display.text.limit)|raw }}
+                                    {%- else -%}
+                                        {{ gantry.platform.filter(article_text)|truncate_html(display.text.limit)|html|raw }}
+                                    {%- endif -%}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

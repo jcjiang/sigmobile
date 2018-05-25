@@ -1,0 +1,234 @@
+name: People
+description: Display People.
+type: particle
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable People particles.
+      default: true
+
+    _note:
+      type: separator.note
+      class: alert alert-info
+      content: '<strong>This Particle requires the "UIkit for Gantry5" Atom to be loaded.</strong>'
+
+    mainheading:
+      type: input.text
+      label: Title
+      description: Type in the title.
+      placeholder: 'Enter Title'
+      default: ''
+
+    introtext:
+      type: textarea.textarea
+      label: Intro Text
+      description: Type in the intro text.
+      placeholder: 'Enter Intro Text'
+      default: ''
+
+    layout:
+      type: select.select
+      label: Layout
+      description: Select the people (tabs) position.
+      placeholder: 'Select...'
+      default: left
+      options:
+        top: Top
+        bottom: Bottom
+        left: Left
+        right: Right
+
+    tabswidth:
+      type: select.select
+      label: Tabs Width
+      description: Select the people (tabs) width ('Left' and 'Right' layout ONLY).
+      placeholder: 'Select...'
+      default: 3
+      options:
+        2: 50%
+        3: 33.3%
+        4: 25%
+        5: 20%
+        6: 16.6%
+
+    justify:
+      type: select.select
+      label: Justify People
+      description: Select if the people (tabs) should be justified ('Top' and 'Bottom' layout ONLY).
+      placeholder: 'Select...'
+      default: no
+      options:
+        yes: Yes
+        no: No
+
+    justifynumber:
+      type: select.select
+      label: Justify People Number
+      description: This should be the number of your people (tabs) (if you have 3 people, then choose '3').
+      placeholder: 'Select...'
+      default: ""
+      options:
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+        6: 6
+
+    animation:
+      type: select.select
+      label: Animation
+      description: Select the people animation.
+      placeholder: 'Select...'
+      default: fade
+      options:
+        none: None
+        fade: Fade
+        scale: Scale
+        slide-top: Slide Top
+        slide-bottom: Slide Bottom
+        slide-left: Slide Left
+        slide-right: Slide Right
+        slide-horizontal: Slide Horizontal
+        slide-vertical: Slide Vertical
+
+    css.class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+      default: 
+
+    extra:
+      type: collection.keyvalue
+      label: Tag Attributes
+      description: Extra Tag attributes.
+      key_placeholder: Key (data-*, style, ...)
+      value_placeholder: Value
+      exclude: ['id', 'class']
+
+    items:
+      type: collection.list
+      array: true
+      label: People Items
+      description: Create each item to display.
+      value: name
+      ajax: true
+
+      fields:
+
+        .image:
+          type: input.imagepicker
+          label: Image
+
+        .alt:
+          type: input.text
+          label: Image Alt Tag
+
+        .personname:
+          type: input.text
+          label: Name
+
+        .position:
+          type: input.text
+          label: Position
+
+        .description:
+          type: textarea.textarea
+          label: Description
+
+        .facebook:
+          type: input.text
+          label: Facebook URL
+
+        .twitter:
+          type: input.text
+          label: Twitter URL
+
+        .googleplus:
+          type: input.text
+          label: Google+ URL
+
+        .github:
+          type: input.text
+          label: Github URL
+
+        .linkedin:
+          type: input.text
+          label: Linkedin URL
+
+        .dribbble:
+          type: input.text
+          label: Dribbble URL
+
+        .email:
+          type: input.text
+          label: Email Address
+
+        .emailbehaviour:
+          type: select.select
+          label: Email Behaviour
+          description: Select the email behaviour (if it should be a 'mailto:' link or a tooltip).
+          placeholder: 'Select...'
+          default: link
+          options:
+            link: Link
+            tooltip: Tooltip
+
+        .phone:
+          type: input.text
+          label: Phone Number
+
+        .phonebehaviour:
+          type: select.select
+          label: Phone Behaviour
+          description: Select the phone behaviour (if it should be a 'tel:' link or a tooltip).
+          placeholder: 'Select...'
+          default: link
+          options:
+            link: Link
+            tooltip: Tooltip
+
+        .socialtarget:
+          type: select.select
+          label: Social Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _blank
+          options:
+            _parent: Self
+            _blank: New Window
+
+        .readmore:
+          type: input.text
+          label: Read More URL
+
+        .readmoretext:
+          type: input.text
+          label: Read More Text
+          description: Type in the button text.
+
+        .readmoreicon:
+          type: input.icon
+          label: Read More Icon
+          description: Select an icon for the button.
+
+        .readmoretarget:
+          type: select.select
+          label: Read More Target
+          description: Target browser window when Read More button is clicked.
+          placeholder: 'Select...'
+          default: _parent
+          options:
+            _parent: Self
+            _blank: New Window
+
+        .class:
+          type: input.selectize
+          label: CSS Class

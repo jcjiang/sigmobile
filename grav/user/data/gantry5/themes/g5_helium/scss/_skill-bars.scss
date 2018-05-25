@@ -1,0 +1,120 @@
+.g-skill-bars {
+	div[class^="g-skill-bars-bar-container"] {
+		&:last-child {
+			.g-skill-bars-bar {
+				margin-bottom: 0;
+			}
+		}	
+	}
+	.g-skill-bars-bar {
+		position: relative;
+		display: block;
+		margin-bottom: 1rem;
+		width: 100%;
+		background: rgba(0,0,0,0.05);
+		height: 2.5rem;
+		border-radius: $core-border-radius;
+		.g-skill-bars-title {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: auto;
+			font-weight: bold;
+			font-size: 13px;
+			color: #ffffff;
+			display: block;
+			background: rgba(0, 0, 0, 0.1);
+			padding: 0 1.25rem;
+			height: 2.5rem;
+			line-height: 2.5rem;
+		}
+		.g-skill-bars-background {
+			height: 2.5rem;
+			border-radius: $core-border-radius;
+			width: 0px;
+		}
+		.g-skill-bars-percent {
+			position: absolute;
+			right: 10px;
+			top: 0;
+			font-size: 11px;
+			height: 2.5rem;
+			line-height: 2.5rem;
+			color: rgba(0,0,0,0.4);
+		}
+	}
+	&.style2 {
+		.g-skill-bars-title {
+			color: inherit;
+			background: transparent;
+			margin-bottom: 0.5rem;
+		}
+		
+		.g-skill-bars-percent {
+			color: inherit;
+			height: 0.625rem;
+			line-height: 0.625rem;
+			float: right;
+			margin-top: -1.5rem;
+		}
+		
+		.g-skill-bars-bar {
+			height: 0.625rem;
+			border-radius: 0;
+
+			.g-skill-bars-background {
+				height: 0.625rem;
+				border-radius: 0;
+			}
+		}
+	}
+
+	&.style3 {
+		.g-skill-bars-title {
+			color: inherit;
+			background: transparent;
+			margin-bottom: 0.5rem;
+		}
+		
+		.g-skill-bars-percent {
+			color: inherit;
+			height: 0.625rem;
+			line-height: 0.625rem;
+			float: right;
+			margin-top: -1.5rem;
+		}
+		
+		.g-skill-bars-bar {
+			height: 1.5rem;
+			border-radius: 2rem;
+			border: 2px solid $base-border-color;
+			background: transparent;
+			padding: 0.25rem;
+
+			.g-skill-bars-background {
+				height: 0.75rem;
+				border-radius: 2rem;
+			}
+		}
+	}
+	
+	&.style4 {
+		.g-skill-bars-bar {
+			.g-skill-bars-title {
+				background: transparent;
+			}
+			.g-skill-bars-percent {
+				position: initial;
+				float: right;
+				margin: 0.5rem;
+				margin-right: 1rem;
+				padding: 0 1rem;
+				color: $base-text-color;
+				background: $white;
+				border-radius: $core-border-radius;
+				height: 1.5rem;
+				line-height: 1.5rem;
+			}
+		}
+	}
+}

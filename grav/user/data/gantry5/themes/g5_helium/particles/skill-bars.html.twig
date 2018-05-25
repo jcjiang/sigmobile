@@ -1,0 +1,153 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+	{% for attributes in particle.extra %}
+		{% for key, value in attributes %}
+			{% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+
+{% set particleheading %}
+	<div class="g-particle-intro">
+		{% if particle.mainheading %}
+			<h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+			<div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+		{% endif %}	
+		{% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+	</div>
+{% endset %}
+
+{% set containerid = random() %}
+
+{% set skillbarsitems %}
+	{% for item in particle.items %}
+		{% set attr_extra_item = '' %}
+		{% for extra in item.extra %}
+			{% set attr_extra_item = attr_extra_item ~ ' ' ~ extra|keys|first|e ~ '="' ~ extra|values|first|e('html_attr') ~ '"' %}
+		{% endfor %}
+
+		{% set title %}
+			<div class="g-skill-bars-title">
+				{{- item.title|raw -}}
+			</div>
+		{% endset %}
+
+		{% set percent %}
+			<div class="g-skill-bars-percent">
+				{{- item.percent|raw -}}
+			</div>
+		{% endset %}
+
+		{% set style1 %}
+			<div class="g-skill-bars-bar-container_{{ containerid }}{% if item.class %} {{ item.class|e }}{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+				<div class="g-skill-bars-bar" data-percent="{{ item.percent|e }}">
+					{% if item.title %}
+						{{ title }}
+					{% endif %}
+
+					{% if item.percent %}
+						<div style="background-color: {{ item.skillbarbackground|e }};" class="g-skill-bars-background"></div>
+						{{ percent }}
+					{% endif %}
+				</div>
+			</div>
+		{% endset %}
+
+		{% set style2 %}
+			<div class="g-skill-bars-bar-container_{{ containerid }}{% if item.class %} {{ item.class|e }}{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+				{% if item.title %}
+					{{ title }}
+				{% endif %}
+
+				{% if item.percent %}
+					{{ percent }}
+				{% endif %}
+
+				<div class="g-skill-bars-bar" data-percent="{{ item.percent|e }}">
+					{% if item.percent %}
+						<div style="background-color: {{ item.skillbarbackground|e }};" class="g-skill-bars-background"></div>
+					{% endif %}
+				</div>
+			</div>
+		{% endset %}
+
+		{% set style3 %}
+			<div class="g-skill-bars-bar-container_{{ containerid }}{% if item.class %} {{ item.class|e }}{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+				<div class="g-skill-bars-bar" data-percent="{{ item.percent|e }}">
+					{% if item.title %}
+						{{ title }}
+					{% endif %}
+
+					{% if item.percent %}
+						<div style="background-color: {{ item.skillbarbackground|e }};" class="g-skill-bars-background">
+							<span class="g-skill-bars-percent">{{ item.percent|e }}</span>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endset %}
+
+		{% if particle.style|default("style1") == "style1" %}{{ style1 }}{% endif %}
+		{% if particle.style|default("style1") == "style2" or particle.style|default('style1') == 'style3' %}{{ style2 }}{% endif %}
+		{% if particle.style|default("style1") == "style4" %}{{ style3 }}{% endif %}
+
+	{% endfor %}
+{% endset %}
+
+{% block particle %}
+	<div class="g-skill-bars {{ particle.style|default("style1")|e }}{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+		{% if particle.mainheading or particle.introtext %}
+			{{ particleheading }}
+		{% endif %}
+		<div class="g-grid">
+			<div class="g-block">
+				{{ skillbarsitems }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% if particle.enabled %}
+		{{ parent() }}
+		<script type="text/javascript">
+			(function($) {
+				$(document).ready(function() {
+					{% if particle.animation|default("onload") == "onload" %}
+						$('.g-skill-bars-bar-container_{{ containerid }} .g-skill-bars-bar').each(function(){
+							$(this).find('.g-skill-bars-background').animate({
+								width:$(this).attr('data-percent')
+							},2500);
+						});
+					{% endif %}
+
+					{% if particle.animation|default("onload") == "viewport" %}
+						$.fn.inView = function(){
+							if(!this.length) return false;
+							var rect = this.get(0).getBoundingClientRect();
+
+							return (
+								rect.top >= 0 &&
+								rect.left >= 0 &&
+								rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+								rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+							);
+						};
+
+						$(window).on('scroll',function(){ 
+							if( $('.g-skill-bars-bar-container_{{ containerid }}').inView() ) {
+								$('.g-skill-bars-bar-container_{{ containerid }} .g-skill-bars-bar').each(function(){
+									$(this).find('.g-skill-bars-background').animate({
+										width:$(this).attr('data-percent')
+									},2500);
+								});
+							};
+						});
+					{% endif %}
+				});
+			})(jQuery);
+		</script>
+	{% endif %}
+{% endblock %}

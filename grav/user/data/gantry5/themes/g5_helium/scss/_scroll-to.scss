@@ -1,0 +1,39 @@
+// Set the variable defaults in case they are missing in the template
+$top-background-color: #304356 !default;
+$top-text-color: #ffffff !default;
+
+#g-top {
+	.g-scroll-to {
+		a {
+			padding: 11px 15px;
+			border-right: 1px solid lighten($top-background-color, 10%);
+			border-left: 1px solid lighten($top-background-color, 10%);
+			color: $top-text-color;
+			display: inline-block;
+			@include transition(all 0.2s);
+			&:hover {
+				color: $accent-color-1;
+			}
+		}
+	}
+}
+
+.g-scroll-to {
+	a {
+		span {
+			margin-right: 8px;
+		}
+	}
+}
+
+// RTL Adjustments
+[dir="rtl"] {
+	.g-scroll-to {
+		a {
+			span {
+				margin-left: 8px;
+				margin-right: 0;
+			}
+		}
+	}	
+}

@@ -1,0 +1,73 @@
+.g-process {
+	text-align: center;
+	.g-process-item {
+		width: 70%;
+		@include breakpoint(mobile-only) {
+			width: 100%;
+		}
+		margin: 0 auto 1.5rem;
+		.g-process-item-icon {
+			color: $base-text-color;
+			background: $base-border-color;
+			font-size: 2rem;
+			line-height: 90px;
+			border-radius: 50%;
+			width: 90px;
+			height: 90px;
+			margin: 0 auto;
+			display: block;
+			position: absolute;
+		}
+		.g-process-image {
+			position: relative;
+			display: inline-block;
+			img {
+				width: 280px;
+				height: 280px;
+				background: $white;
+				border: 10px solid $base-border-color;
+				border-radius: 50%;
+			}
+		}
+		.g-process-item-title {
+			text-transform: uppercase;
+			margin-top: 1.5rem;
+		}
+		.g-process-item-desc {
+			margin: 1.5rem 0;
+		}
+		&:after {
+			content:"";
+			display: block;
+			width: 2px;
+			height: 4rem;
+			background: $base-border-color;
+			margin: 1rem auto 0;
+		}
+		&.invert-color {
+			.g-process-item-icon {
+				color: $base-text-color;
+				background: $white;
+			}
+			.g-process-image {
+				img {
+					border: 10px solid $white;
+				}
+			}
+		}
+	}
+	> .g-grid {
+		&:last-child {
+			.g-process-item {
+				margin: 0 auto;
+				&:after {
+					display: none;
+					margin: 0;
+				}
+				p {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

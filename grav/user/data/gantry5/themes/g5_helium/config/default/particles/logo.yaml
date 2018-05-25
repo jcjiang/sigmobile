@@ -1,0 +1,8 @@
+enabled: '1'
+url: user/themes/g5_helium/images/sigmobile-logo.svg
+target: _self
+image: 'gantry-media://sigmobile-logo.svg'
+link: '1'
+svg: ''
+text: ''
+class: 'g-logo g-logo-helium'

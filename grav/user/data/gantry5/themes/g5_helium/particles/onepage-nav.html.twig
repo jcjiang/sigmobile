@@ -1,0 +1,64 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set onepageitems %}
+    {% for item in particle.items %}
+        {% set attr_extra_item = '' %}
+        {% for extra in item.extra %}
+            {% set attr_extra_item = attr_extra_item ~ ' ' ~ extra|keys|first|e ~ '="' ~ extra|values|first|e('html_attr') ~ '"' %}
+        {% endfor %}
+
+        {% set style1 %}
+            <li class="g-onepage-nav-item{% if item.class %} {{ item.class|e }}{% endif %}" {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+                <a href="{% if item.link %}#{{ item.link|e }}{% endif %}" data-uk-tooltip="{pos:'right'}" title="{{ item.title|e }}">
+                    {% if particle.style|default("style1") == "style2" %}
+                        <i class="{{ item.icon|e }}"></i>
+                    {% endif %}
+                </a>
+            </li>
+        {% endset %}
+
+        {% if particle.style|default("style1") == "style1" or particle.style|default('style1') == 'style2' %}{{ style1 }}{% endif %}
+
+    {% endfor %}
+{% endset %}
+
+{% block particle %}
+    <div class="g-onepage-nav {{ particle.style|default("style1")|e }}{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        <ul style="background: {{ particle.background|e }};" data-uk-scrollspy-nav="{closest:'li', smoothscroll: {offset: {{ particle.smoothscrolloffset|e }}}}">
+            {{ onepageitems }}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script type="text/javascript">
+        (function($) {
+            $(document).ready(function() { 
+                var onepageContainer = $(".g-onepage-nav");
+                var onepageHeight = $(".g-onepage-nav").innerHeight();
+                var onepageItem = $(".g-onepage-nav .g-onepage-nav-item");
+
+                $(onepageContainer).css({
+                    'margin-top' : -(onepageHeight / 2),
+                    'visibility' : 'visible'
+                });
+
+                $(onepageItem).on("click", function(e) {
+                    $(".uk-tooltip").css({
+                        'display' : 'none'
+                    });
+                });
+            });
+        })(jQuery);
+    </script>
+{% endblock %}

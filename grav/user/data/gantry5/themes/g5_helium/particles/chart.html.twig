@@ -1,0 +1,264 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set attr_extra_left = '' %}
+{% if particle.extra_left %}
+    {% for attributes in particle.extra_left %}
+        {% for key, value in attributes %}
+            {% set attr_extra_left = attr_extra_left ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set attr_extra_right = '' %}
+{% if particle.extra_right %}
+    {% for attributes in particle.extra_right %}
+        {% for key, value in attributes %}
+            {% set attr_extra_right = attr_extra_right ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set indentifier = random() %}
+
+{% block stylesheets %}
+	{% if particle.enabled %}
+		{{ parent() }}
+		<style type="text/css">
+			#myChart-{{ indentifier|e }} {
+				max-width: 100%;
+			}
+		</style>
+	{% endif %}
+{% endblock %}
+
+{% set particleheading %}
+	<div class="g-particle-intro">
+		{% if particle.mainheading %}
+			<h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+			<div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+		{% endif %}	
+		{% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+	</div>
+{% endset %}
+
+{% set textcontent %}
+    {% if particle.title %}
+        <h3 class="g-chart-feature-title">
+            {{- particle.title|raw -}}
+        </h3>
+    {% endif %}
+
+    {% if particle.description %}
+        <p class="g-chart-feature-desc">
+            {{- particle.description|raw -}}
+        </p>
+    {% endif %}
+
+    {% if particle.link %}
+        <a class="button g-chart-feature-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_blank')|e }}">
+            {%- if particle.buttonicon -%}
+                <i class="{{ particle.buttonicon|e }}"></i>
+            {%- endif -%}
+            {{- particle.buttontext|raw -}}
+        </a>
+    {% endif %}
+{% endset %}
+
+{% set chartcontent %}
+	<canvas id="myChart-{{ indentifier|e }}" width="{{ particle.width|default(550) }}" height="{{ particle.height|default(550) }}"></canvas>
+{% endset %}
+
+{% block particle %}
+	<div class="g-chart{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %} >
+		{% if particle.mainheading or particle.introtext %}
+			{{ particleheading }}
+		{% endif %}
+
+		{% if particle.featuremode|default(0) == 0 %}
+			{{- chartcontent -}}
+		{% else %}
+			<div class="g-grid">
+				<div class="g-block g-chart-feature-left{% if particle.css.left %} {{ particle.css.left|e }}{% endif %}{% if particle.layout|default('right')|e == 'left' %} chart-block size-{{ particle.chartwidth|default(50)|e }}{% endif %}" {% if particle.extra_left %}{{ attr_extra_left|raw }}{% endif %}>
+					<div class="g-content">
+						{% if particle.layout|default('right')|e == 'right' %}{{ textcontent }}{% endif %}
+						{% if particle.layout|default('right')|e == 'left' %}{{ chartcontent }}{% endif %}
+					</div>
+				</div>
+
+				<div class="g-block g-chart-feature-right{% if particle.css.right %} {{ particle.css.right|e }}{% endif %}{% if particle.layout|default('right')|e == 'right' %} align-right chart-block size-{{ particle.chartwidth|default(50)|e }}{% endif %}" {% if particle.extra_right %}{{ attr_extra_right|raw }}{% endif %}>
+					<div class="g-content">
+						{% if particle.layout|default('right')|e == 'right' %}{{ chartcontent }}{% endif %}
+						{% if particle.layout|default('right')|e == 'left' %}{{ textcontent }}{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% if particle.enabled %}
+		{{ parent() }}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var ctx = document.getElementById('myChart-{{ indentifier|e }}').getContext('2d');
+			Chart.defaults.global.defaultFontColor = '{{ particle.fontcolor|default("#666666") }}';
+			Chart.defaults.global.defaultFontSize = {{ particle.fontsize|default(12) }};
+			Chart.defaults.global.defaultFontStyle = '{{ particle.fontstyle|default('normal') }}';
+			var myChart = new Chart(ctx, {
+				type: '{{ particle.charttype|default('line') }}',
+
+				{% if particle.charttype|default('line') == 'line' or particle.charttype|default('line') == 'bar' or particle.charttype|default('line') == 'radar' %}
+					data: {
+						labels: [
+							{% for label in particle.labels %}
+								{% if not loop.last %}
+									"{{ label.labelname|trim|e('js') }}",
+								{% else %}
+									"{{ label.labelname|trim|e('js') }}"
+								{% endif %}
+							{% endfor %}
+						],
+						datasets: [
+							{% for dataset in particle.datasets %}
+								{% if not loop.last %}
+									{
+										label: '{{ dataset.title|trim|e('js') }}',
+										data: [{{ dataset.data|trim|e }}],
+										backgroundColor: "{{ dataset.backgroundcolor|default('#666666')|trim|e }}",
+										borderColor: "{{ dataset.bordercolor|default('rgba(0,0,0,0.1)')|trim|e }}",
+										borderWidth: "{{ dataset.borderwidth|default(3)|trim|e }}",
+										{% if dataset.borderstyle|default('line') == 'dashed' %}
+											borderDash: [10,5],
+										{% endif %}
+										pointRadius: {{ dataset.pointradius|default(3)|trim|e }},
+										pointHoverRadius: {{ dataset.pointradius|default(3)|trim|e + 1 }},
+										pointStyle: '{{ dataset.pointstyle|default('circle')|trim|e }}'
+									},
+								{% else %}
+									{
+										label: '{{ dataset.title|trim|e('js') }}',
+										data: [{{ dataset.data|trim|e }}],
+										backgroundColor: "{{ dataset.backgroundcolor|default('#666666')|trim|e }}",
+										borderColor: "{{ dataset.bordercolor|default('rgba(0,0,0,0.1)')|trim|e }}",
+										borderWidth: "{{ dataset.borderwidth|default(3)|trim|e }}",
+										{% if dataset.borderstyle|default('line') == 'dashed' %}
+											borderDash: [10,5],
+										{% endif %}
+										pointRadius: {{ dataset.pointradius|default(3)|trim|e }},
+										pointHoverRadius: {{ dataset.pointradius|default(3)|trim|e + 1 }},
+										pointStyle: '{{ dataset.pointstyle|default('circle')|trim|e }}'
+									}
+								{% endif %}
+							{% endfor %}
+						]
+					},
+				{% else %}
+					data: {
+						labels: [
+							{% for label in particle.labels %}
+								{% if not loop.last %}
+									"{{ label.labelname|trim|e('js') }}",
+								{% else %}
+									"{{ label.labelname|trim|e('js') }}"
+								{% endif %}
+							{% endfor %}
+						],
+						datasets: [{
+							backgroundColor: [
+								{% for label in particle.labels %}
+									{% if not loop.last %}
+										"{{ label.labeldata.backgroundcolor|default('#666666')|trim|e }}",
+									{% else %}
+										"{{ label.labeldata.backgroundcolor|default('#666666')|trim|e }}"
+									{% endif %}
+								{% endfor %}
+							],
+							borderColor: [
+								{% for label in particle.labels %}
+									{% if not loop.last %}
+										"{{ label.labeldata.bordercolor|default('#ffffff')|trim|e }}",
+									{% else %}
+										"{{ label.labeldata.bordercolor|default('#ffffff')|trim|e }}"
+									{% endif %}
+								{% endfor %}
+							],
+							borderWidth: [
+								{% for label in particle.labels %}
+									{% if not loop.last %}
+										"{{ label.labeldata.borderwidth|default(2)|trim|e }}",
+									{% else %}
+										"{{ label.labeldata.borderwidth|default(2)|trim|e }}"
+									{% endif %}
+								{% endfor %}
+							],
+							data: [
+								{% for label in particle.labels %}
+									{% if not loop.last %}
+										"{{ label.labeldata.data|trim|e }}",
+									{% else %}
+										"{{ label.labeldata.data|trim|e }}"
+									{% endif %}
+								{% endfor %}
+							]
+						}]
+					},
+				{% endif %}
+
+				options: {
+					scales : {
+						xAxes : [{
+							display: {{ particle.xaxes|default('true')|e }},
+							gridLines:{
+								color: '{{ particle.xaxescolor|default("rgba(0, 0, 0, 0.1)") }}',
+								zeroLineColor: '{{ particle.xaxescolor|default("rgba(0, 0, 0, 0.1)") }}'
+							}
+						}],
+						yAxes : [{
+							display: {{ particle.yaxes|default('true')|e }},
+							gridLines:{
+								color: '{{ particle.yaxescolor|default("rgba(0, 0, 0, 0.1)") }}',
+								zeroLineColor: '{{ particle.xaxescolor|default("rgba(0, 0, 0, 0.1)") }}'
+							}
+						}]
+					},
+					{% if particle.charttitletext %}
+						title: {
+							display: true,
+							text: '{{ particle.charttitletext|e('js') }}',
+							position: '{{ particle.charttitleposition|default('top') }}',
+							fontSize: {{ particle.titlefontsize|default(12) }},
+							fontStyle: '{{ particle.titlefontstyle|default('bold') }}',
+							fontColor: '{{ particle.titlefontcolor|default("#666666") }}'
+						},
+					{% endif %}
+					legend: {
+						{% if particle.chartlegendposition|default('top') == 'hide' %}
+							display: false,
+						{% else %}
+							display: true,
+						{% endif %}
+						position: '{{ particle.chartlegendposition|default('top') }}',
+						labels: {
+							fontSize: {{ particle.legendfontsize|default(12) }},
+							fontStyle: '{{ particle.legendfontstyle|default('bold') }}',
+							fontColor: '{{ particle.legendfontcolor|default("#666666") }}'
+						}
+					},
+					{% if particle.fullwidth|default(1) == 0 %}
+						responsive: false
+					{% endif %}
+				}
+			});
+		</script>
+	{% endif %}
+{% endblock %}

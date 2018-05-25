@@ -1,0 +1,99 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+	{% if particle.enabled %}
+		{{ parent() }}
+		<style type="text/css">
+			#header-search {
+				background: {{ particle.bgcolor|default("#ffffff") }};
+			}
+
+			#header-search .search input, #header-search .search-field, #header-search .search-input, #header-search .uk-close {
+				color: {{ particle.textcolor|default("#818181") }} !important;
+			}
+
+			#header-search .uk-close:hover {
+				color: {{ particle.textcolor|default("#818181") }};
+			}
+		</style>
+	{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+	{% if particle.enabled %}
+		{% do gantry.load('jquery') %}
+		{{ parent() }}
+		<script type="text/javascript">
+			(function($) {
+				// Header Search
+				$(window).load(function() {
+					var headerSearch = $("#header-search");
+					var headerSearchHeight = $("{{ particle.menusection|default('#g-header')|e }}").innerHeight();
+					var closeSearch = $("#header-search a.uk-close");
+
+					{% if gantry.platform.getName() == 'joomla' %}
+						var inputSearch = $("input#mod-search-searchword");
+					{% endif %}
+					{% if gantry.platform.getName() == 'wordpress' %}
+						var inputSearch = $("input.search-field");
+					{% endif %}
+					{% if gantry.platform.getName() == 'grav' %}
+						var inputSearch = $("input.search-input");
+					{% endif %}
+
+					var searchToggle = $("a#header-search-toggle");
+
+					$(headerSearch).prependTo($("{{ particle.menusection|default('#g-header')|e }} .g-grid:first")).css({
+						'height' : headerSearchHeight,
+						'line-height' : (headerSearchHeight) + 'px'
+					});
+
+					$(closeSearch).css({
+						'top' : (headerSearchHeight / 2) - 10 
+					});
+
+					$(inputSearch).css({
+						'height' : headerSearchHeight,
+						'line-height' : (headerSearchHeight) + 'px'
+					});
+
+					$(searchToggle).on("click", function(e) {
+						e.preventDefault();
+						$(headerSearch).fadeIn("fast");
+						$(inputSearch).focus();
+					});
+
+					$(closeSearch).on("click", function(e) {
+						e.preventDefault();
+						$(headerSearch).fadeOut("fast");
+					});
+				});
+			})(jQuery);
+		</script>
+	{% endif %}
+{% endblock %}
+
+{% block particle %}
+
+	<a id="header-search-toggle" href=""><i class="fa fa-search"></i></a>
+
+	<div id="header-search" class="">
+		<div class="g-block">
+			<div class="g-content">
+				<a class="uk-close"></a>
+				{% if gantry.platform.getName() == 'joomla' %}
+					{{ gantry.platform.filter("{loadposition header-search}")|html|raw }}
+				{% endif %}
+
+				{% if gantry.platform.getName() == 'wordpress' %}
+					{{ gantry.platform.call('get_search_form') }}
+				{% endif %}
+
+				{% if gantry.platform.getName() == 'grav' %}
+					{% include 'partials/simplesearch_searchbox.html.twig' %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
