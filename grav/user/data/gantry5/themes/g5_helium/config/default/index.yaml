@@ -1,5 +1,5 @@
 name: default
-timestamp: 1527269268
+timestamp: 1524404624
 version: 7
 preset:
   image: 'gantry-admin://images/layouts/default.png'
@@ -38,8 +38,8 @@ particles:
     system-content-3756: 'Page Content'
   contentvertcubes:
     contentvertcubes-6684: 'Content Vertical Cubes'
-  accordion:
-    accordion-9671: Accordion
+  custom:
+    custom-1179: 'Custom HTML'
   contentvertcubeslong:
     contentvertcubeslong-2097: 'Content Vertical Cubes Long'
   position:

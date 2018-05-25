@@ -14,7 +14,8 @@ layout:
   /header/: {  }
   /intro/:
     -
-      - system-content-1587
+      - 'system-content-1587 72'
+      - 'contenttabs-1573 28'
   /features/: {  }
   /utility/: {  }
   /above/: {  }
@@ -122,6 +123,8 @@ content:
           name: Google+
     block:
       class: g-social-header
+  contenttabs-1573:
+    title: 'Content Tabs'
   position-position-4734:
     title: Aside
     attributes:
