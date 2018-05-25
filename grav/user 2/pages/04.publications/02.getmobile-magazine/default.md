@@ -1,0 +1,4 @@
+---
+title: 'GetMobile Magazine'
+---
+

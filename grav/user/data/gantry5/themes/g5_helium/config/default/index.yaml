@@ -1,5 +1,7 @@
 name: default
+
 timestamp: 1524404624
+
 version: 7
 preset:
   image: 'gantry-admin://images/layouts/default.png'

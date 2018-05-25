@@ -1,0 +1,30 @@
+// Set the variable defaults in case they are missing in the template
+$base-title-color: #4d4d4d !default;
+
+.g-accordion {
+	.g-accordion-image {
+		float: left;
+		width: 33%;
+		margin-right: 25px;
+		@include breakpoint(mobile-only) {
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 20px;
+			float: none;
+		}
+	}
+	.g-article-details {
+		margin-top: 10px;
+		font-size: 90%;
+		color: lighten($base-text-color, 15%);
+		> span {
+			margin-right: 10px;
+			&:last-child {
+				margin-right: 0;
+			}
+			i {
+				margin-right: 5px;
+			}
+		}
+	}
+}

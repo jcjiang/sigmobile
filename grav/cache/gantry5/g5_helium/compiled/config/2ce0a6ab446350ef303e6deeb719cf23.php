@@ -1,13 +1,13 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527270801,
-    'checksum' => 'd02dfb5c10ed59c481ac66d82391b700',
+    'timestamp' => 1527274221,
+    'checksum' => 'f4a34d9ef348dd8ebac613486dbf0bd9',
     'files' => [
         'user/data/gantry5/themes/g5_helium/config/default' => [
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/index.yaml',
-                'modified' => 1527259771
+                'modified' => 1527273778
             ],
             'layout' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/layout.yaml',

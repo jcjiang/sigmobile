@@ -1,0 +1,406 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+	{% for attributes in particle.extra %}
+		{% for key, value in attributes %}
+			{% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{% set link_settings = particle.link %}
+{% set display2 = link_settings.display %}
+
+{% set linkstart = (particle.columns|default('3')|e) * (particle.rows|default('1')|e) * (particle.pages|default('3')|e) %}
+
+{# Content Finder #}
+{% set articles = grav.page.collection({
+    items: {'@taxonomy.category': filter.categories|split(' ')},
+    order: {by: sort.orderby, dir: sort.ordering},
+    url_taxonomy_filters: false
+}, false).slice(limit.start, 9999) %}
+
+{% set links = grav.page.collection({
+    items: {'@taxonomy.category': filter.categories|split(' ')},
+    order: {by: sort.orderby, dir: sort.ordering},
+    url_taxonomy_filters: false
+}, false).slice(limit.start + linkstart|e, 9999) %}
+
+{% set particleheading %}
+	<div class="g-particle-intro">
+		{% if particle.mainheading %}
+			<h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+			<div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+		{% endif %}	
+		{% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+	</div>
+{% endset %}
+
+{% set newsproitems %}
+	{% for page in articles|batch((particle.columns|default('3')|e) * (particle.rows|default('1')|e))|slice(0,particle.pages) %}
+		<div class="g-news-pro-page">
+			{% for row in page|batch(particle.columns|default('3')|e) %}
+				<div class="uk-grid uk-grid-width-1-{{ particle.columns|default('3')|e }}">
+					{% for article in row %}
+
+						{% set image %}
+							{% set articleimage %}
+								{%- if display.image.enabled == 'intro' -%}
+									{% set file = article.header.image.summary.enabled|defined(false) ? (article.header.image.summary.file ?: true) %}
+								{% elseif display.image.enabled == 'full' %}
+									{% set file = article.header.image.text.enabled|defined(false) ? (article.header.image.text.file ?: true) %}
+								{% endif %}
+
+								{% set imageinner = file is same as(true) ? article.media.images|first : (file ? article.media.images[file]) %}
+
+								{% if imageinner %}
+									background-image: url({{ imageinner.url }})
+								{% endif %}
+							{% endset %}
+
+							{%- set imagewidth -%}
+								width: {{ particle.width|default('160')|e }}px
+							{%- endset -%}
+
+							{%- set imageheight -%}
+								height: {{ particle.height|default('120')|e }}px
+							{%- endset -%}
+
+							<div class="g-news-pro-image{% if particle.fullwidth|default(0) == 1 %} image-fullwidth{% endif %}{% if particle.lightbox|default('enable') == 'disablelink' %} image-link{% endif %}" style="{{ articleimage }}; {% if particle.fullwidth|default(0) == 0 %}{{ imagewidth }};{% endif %} {{ imageheight }};">
+								{% if particle.lightbox|default('enable') == 'enable' %}
+									<a href="{{ url(imageinner.url, false, 0) }}" data-uk-lightbox class="uk-overlay uk-overlay-hover" aria-label="{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}">
+										<span class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></span>
+									</a>
+								{% elseif particle.lightbox|default('enable') == 'disablelink' %}
+									<a href="{{ article.url }}" aria-label="{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}"></a>
+								{% endif %}
+							</div>
+						{% endset %}
+
+						{% set articletitle %}
+							<h4 class="g-news-pro-title">
+								{%- if display.title.enabled|default('show') == 'show' -%}
+									<a href="{{ article.url }}">
+										{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw -}}
+									</a>
+								{%- else -%}
+									{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw -}}
+								{%- endif -%}
+							</h4>
+						{% endset %}
+
+						{% set articledetails %}
+							<div class="g-article-details details-{{ particle.articledetails }}">
+								{% if display.date.enabled %}
+									<span class="g-article-date">
+										{%- if display.date.enabled == 'published' -%}
+											<i class="fa fa-clock-o"></i>{{- article.publishDate()|date(display.date.format) -}}
+										{%- elseif display.date.enabled == 'modified' -%}
+											<i class="fa fa-clock-o"></i>{{- article.modified|date(display.date.format) -}}
+										{%- else -%}
+											<i class="fa fa-clock-o"></i>{{- article.date|date(display.date.format) -}}
+										{%- endif -%}
+									</span>
+								{% endif %}
+
+								{% if display.author.enabled and (article.header.author.username or article.header.author.name or article.header.author.alias) %}
+									{% if article.header.author.name %}
+										{% set author = article.header.author.name %}
+									{% elseif article.header.author.alias %}
+										{% set author = article.header.author.alias %}
+									{% else %}
+										{% set author = article.header.author.username %}
+									{% endif %}
+
+									<span class="g-article-author">
+										<i class="fa fa-user"></i>{{- author -}}
+									</span>
+								{% endif %}
+
+								{% if display.category.enabled %}
+									{% set category_link = display.category.route == true %}
+									<span class="g-article-category">
+										{% for category in article.taxonomy.category %}
+											{% if category_link %}
+												<a href="{{ base_url ~ display.category.route }}">
+													<i class="fa fa-folder-open"></i>{{- category|raw -}}
+												</a>
+											{% else %}
+												<i class="fa fa-folder-open"></i>{{- category|raw -}}
+											{% endif %}
+										{% endfor %}
+									</span>
+								{% endif %}
+							</div>
+						{% endset %}
+
+						{% set articletext %}
+							{% set article_text = display.text.type == 'intro' ? article.summary : article.content %}
+							<div class="g-news-pro-desc">
+								{%- if display.text.formatting == 'text' -%}
+									{{ article_text|truncate_text(display.text.limit)|raw }}
+								{%- else -%}
+									{{ gantry.platform.filter(article_text)|truncate_html(display.text.limit)|html|raw }}
+								{%- endif -%}
+							</div>
+						{% endset %}
+
+						{% set readmorebutton %}
+							<div class="g-article-read-more">
+								<a class="button" href="{{ article.url }}">
+									{{- display.read_more.label|default('Read More...') -}}
+								</a>
+							</div>
+						{% endset %}
+
+						{% set article %}
+							<div class="g-news-pro-item {{ particle.layout|default('vertical')|e }} {% for category in article.taxonomy.category %}g-cat-{{ category|raw|lower|hyphenize }}{% endfor %}">
+								{% if display.image.enabled and (article.header.image.summary.enabled or article.header.image.text.enabled) %}
+									{{ image }}
+								{% endif %}
+
+								{% if display.title.enabled or particle.articledetails|default('show') != 'hide' or display.text.type or display.read_more.enabled %}
+									<div class="g-info-container">
+										{% if display.title.enabled %}
+											{{ articletitle }}
+										{% endif %}
+
+										{% if particle.articledetails|default('show') == 'show' %}
+											{{ articledetails }}
+										{% endif %}
+
+										{% if display.text.type %}
+											{{ articletext }}
+										{% endif %}
+
+										{% if particle.articledetails|default('show') == 'showbottom' %}
+											{{ articledetails }}
+										{% endif %}
+
+										{% if display.read_more.enabled %}
+											{{ readmorebutton }}
+										{% endif %}
+									</div>
+								{% endif %}
+							</div>
+						{% endset %}
+
+						{{ article }}
+
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+{% endset %}
+
+{% set newsprolinks %}
+		<div class="g-news-pro-link-block {{ particle.linkposition|default('right')|e }}">
+			{% for row in links|batch(particle.linkcolumns|default('1')|e)|slice(0,particle.linkrows) %}
+				<div class="uk-grid uk-grid-width-1-{{ particle.linkcolumns|default('1')|e }}">
+					{% for link in row %}
+
+						{% set image2 %}
+							{% set linkimage %}
+								{%- if display2.image.enabled == 'intro' -%}
+									{% set file = link.header.image.summary.enabled|defined(false) ? (link.header.image.summary.file ?: true) %}
+								{% elseif display2.image.enabled == 'full' %}
+									{% set file = link.header.image.text.enabled|defined(false) ? (link.header.image.text.file ?: true) %}
+								{% endif %}
+
+								{% set imageinner2 = file is same as(true) ? link.media.images|first : (file ? link.media.images[file]) %}
+
+								{% if imageinner2 %}
+									background-image: url({{ imageinner2.url }})
+								{% endif %}
+							{% endset %}
+
+							{%- set linkimagewidth -%}
+								width: {{ particle.linkwidth|default('120')|e }}px
+							{%- endset -%}
+
+							{%- set linkimageheight -%}
+								height: {{ particle.linkheight|default('75')|e }}px
+							{%- endset -%}
+
+							<div class="g-news-pro-image{% if particle.linkfullwidth|default(0) == 1 %} image-fullwidth{% endif %}{% if particle.linklightbox|default('enable') == 'disablelink' %} image-link{% endif %}" style="{{ linkimage }}; {% if particle.linkfullwidth|default(0) == 0 %}{{ linkimagewidth }};{% endif %} {{ linkimageheight }};">
+								{% if particle.linklightbox|default('enable') == 'enable' %}
+									<a href="{{ url(imageinner2.url, false, 0) }}" data-uk-lightbox class="uk-overlay uk-overlay-hover" aria-label="{{- (display2.title.limit ? link.title|e|truncate_text(display2.title.limit) : link.title|e)|raw }}">
+										<span class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></span>
+									</a>
+								{% elseif particle.linklightbox|default('enable') == 'disablelink' %}
+									<a href="{{ link.url }}" aria-label="{{- (display2.title.limit ? link.title|e|truncate_text(display2.title.limit) : link.title|e)|raw }}"></a>
+								{% endif %}
+							</div>
+						{% endset %}
+
+						{% set linktitle %}
+							<h4 class="g-news-pro-title">
+								{% if display2.title.enabled|default('show') == 'show' %}
+									<a href="{{ link.url }}">
+										{{- (display2.title.limit ? link.title|e|truncate_text(display2.title.limit) : link.title|e)|raw }}
+									</a>
+								{% else %}
+									{{- (display2.title.limit ? link.title|e|truncate_text(display2.title.limit) : link.title|e)|raw }}
+								{% endif %}
+							</h4>
+						{% endset %}
+
+						{% set linkdetails %}
+							<div class="g-article-details details-{{ particle.linkdetails }}">
+								{% if display2.date.enabled %}
+									<span class="g-article-date">
+										{%- if display2.date.enabled == 'published' -%}
+											<i class="fa fa-clock-o"></i>{{- link.publishDate()|date(display2.date.format) -}}
+										{%- elseif display2.date.enabled == 'modified' -%}
+											<i class="fa fa-clock-o"></i>{{- link.modified|date(display2.date.format) -}}
+										{%- else -%}
+											<i class="fa fa-clock-o"></i>{{- link.date|date(display2.date.format) -}}
+										{%- endif -%}
+									</span>
+								{% endif %}
+
+								{% if display2.author.enabled and (link.header.author.username or link.header.author.name or link.header.author.alias) %}
+									{% if link.header.author.name %}
+										{% set author2 = link.header.author.name %}
+									{% elseif link.header.author.alias %}
+										{% set author2 = link.header.author.alias %}
+									{% else %}
+										{% set author2 = link.header.author.username %}
+									{% endif %}
+
+									<span class="g-article-author">
+										<i class="fa fa-user"></i>{{- author2 -}}
+									</span>
+								{% endif %}
+
+								{% if display2.category.enabled %}
+									{% set category_link = display2.category.route == true %}
+									<span class="g-article-category">
+										{% for category in link.taxonomy.category %}
+											{% if category_link %}
+												<a href="{{ base_url ~ display2.category.route }}">
+													<i class="fa fa-folder-open"></i>{{- category|raw -}}
+												</a>
+											{% else %}
+												<i class="fa fa-folder-open"></i>{{- category|raw -}}
+											{% endif %}
+										{% endfor %}
+									</span>
+								{% endif %}
+							</div>
+						{% endset %}
+
+						{% set linktext %}
+							{% set article_text = display2.text.type == 'intro' ? link.summary : link.content %}
+							<div class="g-news-pro-desc">
+								{%- if display2.text.formatting == 'text' -%}
+									{{ article_text|truncate_text(display2.text.limit)|raw }}
+								{%- else -%}
+									{{ gantry.platform.filter(article_text)|truncate_html(display2.text.limit)|html|raw }}
+								{%- endif -%}
+							</div>
+						{% endset %}
+
+						{% set linkreadmorebutton %}
+							<div class="g-article-read-more">
+								<a class="button" href="{{ link.url }}">
+									{{- display2.read_more.label|default('Read More...') -}}
+								</a>
+							</div>
+						{% endset %}
+
+						{% set link %}
+							<div class="g-news-pro-link-container {% for category in link.taxonomy.category %}g-cat-{{ category|raw|lower|hyphenize }}{% endfor %}">
+								<div class="g-news-pro-link {{ particle.linklayout|default('horizontal')|e }}">
+									{% if display.image.enabled and (link.header.image.summary.enabled or link.header.image.text.enabled) %}
+										{{ image2 }}
+									{% endif %}
+
+									{% if display2.title.enabled or particle.linkdetails|default('show') != 'hide' or display2.text.type or display2.read_more.enabled %}
+										<div class="g-info-container">
+											{% if display2.title.enabled %}
+												{{ linktitle }}
+											{% endif %}
+
+											{% if particle.linkdetails|default('show') == 'show' %}
+												{{ linkdetails }}
+											{% endif %}
+
+											{% if display2.text.type %}
+												{{ linktext }}
+											{% endif %}
+
+											{% if particle.linkdetails|default('show') == 'showbottom' %}
+												{{ linkdetails }}
+											{% endif %}
+
+											{% if display2.read_more.enabled %}
+												{{ linkreadmorebutton }}
+											{% endif %}
+										</div>
+									{% endif %}
+								</div>
+							</div>
+						{% endset %}
+
+						{{ link }}
+
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+{% endset %}
+
+{% block particle %}
+	<div class="g-news-pro{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+		{% if particle.mainheading or particle.introtext %}
+			{{ particleheading }}
+		{% endif %}
+		<div class="uk-slidenav-position{% if (particle.linksenabled|default(0) == 1) and (particle.linkposition|default('right') == 'right' or particle.linkposition|default('right') == 'left') %} uk-grid uk-grid-width-1-2{% endif %}" data-uk-slideset="{duration: {{ particle.duration|default(200)|e}}, {% if particle.autoplay|default("disable") == "enable" %}autoplay: 'true', autoplayInterval: {{ particle.autoplayInterval|default(7000)|e}},{% endif %} animation: '{{ particle.animation|default('fade')|e}}'}">
+			{% if particle.linksenabled|default(0) == 1 and particle.linkposition|default('right') == 'left' %}
+				{{ newsprolinks }}
+			{% endif %}
+
+			<div class="uk-slider-container">
+				<div class="uk-slideset uk-grid">
+					{{ newsproitems }}
+				</div>
+			</div>
+
+			{% if (particle.linksenabled|default(0) == 1) and (particle.linkposition|default('right') == 'right' or particle.linkposition|default('right') == 'bottom') %}
+				{{ newsprolinks }}
+			{% endif %}
+
+			{% if (particle.pages|default(3) > 1) and ((particle.navigation|default('arrows') == 'arrows') or (particle.navigation|default('arrows') == 'dots') or (particle.navigation|default('arrows') == 'both')) %}
+				<div class="g-news-pro-nav">
+					{% if (particle.navigation|default('arrows') == 'arrows') or (particle.navigation|default('arrows') == 'both') %}
+						<div class="g-news-pro-arrows">
+							<a href="" class="uk-slidenav uk-slidenav-previous" data-uk-slideset-item="previous" aria-label="Previous"></a>
+							<a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideset-item="next" aria-label="Next"></a>
+						</div>
+					{% endif %}
+					
+					{% if (particle.navigation|default('arrows') == 'dots') or (particle.navigation|default('arrows') == 'both') %}
+						<ul class="uk-slideset-nav uk-dotnav uk-flex-center">
+						{% set counter = 0 %}
+						{% for page in articles %}
+							<li data-uk-slideset-item="{{ counter }}">
+								<a href=""></a>
+							</li>
+							{% set counter = counter + 1 %}
+						{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

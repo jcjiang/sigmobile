@@ -1,0 +1,104 @@
+// Set the variable defaults in case they are missing in the template
+$base-element-color: #f8f8f8 !default;
+
+.g-room-page {
+	.g-room-main-image {
+		img {
+			margin-bottom: 8px;
+		}
+	}
+	.g-room-gallery {
+		img {
+			width: 100px;
+			@include transition(all 0.3s);
+		}
+		.g-room-image-container {
+			margin: 0 8px 8px 0;
+			&:hover {
+				img {
+					@include transform(scale(1.15));
+				}
+			}
+		}
+		.uk-overlay-panel {
+			z-index: 4;
+			border-radius: 3px;
+		}
+		.uk-overlay-area:empty::before, .uk-overlay-icon::before {
+			font-size: 16px;
+			height: 40px;
+			width: 40px;
+			line-height: 40px;
+			margin-left: -20px;
+			margin-top: -20px;
+		}
+	}
+	.g-room-title {
+		float: left;
+		margin: 0;
+		@include breakpoint(mobile-only) {
+			float: none;
+		}
+		@include breakpoint(tablet-range) {
+			float: none;
+		}
+	}
+	.g-info-price {
+		float: right;
+		@include breakpoint(mobile-only) {
+			float: none;
+		}
+		@include breakpoint(tablet-range) {
+			float: none;
+		}
+		.title-startfrom {
+			font-size: 16px;
+			font-style: italic;
+			color: lighten($base-text-color, 20%);
+			margin-right: 10px;
+		}
+		.title-startfromvalue {
+			font-size: 20px;
+			color: $accent-color-1;
+		}
+	}
+	.g-room-tile-container {
+		border-bottom: 2px solid $base-border-color;
+		margin: 20px 0 28px;
+	}
+	.g-room-features {
+		margin-bottom: 25px;
+	}
+	.g-room-features-item {
+		background: $base-element-color;
+		padding: 15px 20px;
+		margin: 0 3px 3px 0;
+		.g-item-icon {
+			margin-right: 15px;
+		}
+		.g-item-title {
+			font-weight: bold;
+			margin-right: 10px;
+		}
+		.g-item-value {
+			font-style: italic;
+			color: lighten($base-text-color, 10%);
+		}
+	}
+	.g-room-desc {
+		p {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	.g-room-link {
+		i {
+			margin-right: 10px;
+		}
+	}
+	.g-room-link-container {
+		text-align: center;
+		margin-top: 30px;
+	}
+}

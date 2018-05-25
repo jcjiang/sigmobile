@@ -1,0 +1,158 @@
+.g-keypoints {
+	margin-left: -($content-padding);
+	margin-right: -($content-padding);
+	.g-left-points {
+		.g-content {
+			margin: 0 $content-margin 0 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			text-align: right;
+		}
+		.g-keypoints-item {
+			&:last-child {
+				@include breakpoint(mobile-only) {
+					margin-bottom: 25px;
+				}
+			}
+		}
+	}
+	
+	.g-main-image {
+		text-align: center;
+		.g-content {
+			margin: 0;
+			padding: 0;
+			@include breakpoint(mobile-only) {
+				margin-bottom: 1rem;
+			}
+		}
+	}
+	.image-bottom {
+		margin-bottom: -($content-margin + $content-padding + $section-padding);
+		@include breakpoint(mobile-only) {
+			margin-bottom: 1rem;
+		}
+	}
+	
+	.g-right-points {
+		.g-content {
+			margin: 0 0 0 $content-margin;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	&.style1 {
+		.g-content {
+			@include breakpoint(mobile-only) {
+				text-align: center;
+			}
+		}
+
+		.g-keypoints-item {
+			.g-keypoints-item-desc {
+				margin: 1.5rem 0;
+			}
+			&:last-child {
+				.g-keypoints-item-desc {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.g-keypoints-item-icon {
+			color: $white;
+			background: $accent-color-1;
+			line-height: 2.5rem;
+			border-radius: 100%;
+			width: 2.5rem;
+			height: 2.5rem;
+			text-align: center;
+		}
+
+		.g-left-points {
+			.g-keypoints-item-icon {
+				margin-left: 1.25rem;
+			}
+		}
+
+		.g-right-points {
+			.g-keypoints-item-icon {
+				margin-right: 1.25rem;
+			}
+		}
+	}
+
+	&.style2 {
+		.g-keypoints-item {
+			margin-bottom: 40px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			&:hover {
+				.g-keypoints-item-icon {
+					background: $accent-color-1;
+					color: #ffffff;
+				}
+			}
+		}
+
+		.g-keypoints-item-icon {
+			font-size: 24px;
+			margin-right: 0;
+			color: $accent-color-1;
+			width: 65px;
+			height: 65px;
+			line-height: 65px;
+			text-align: center;
+			border: 1px solid $accent-color-1;
+			border-radius: 50%;
+			@include transition(all 0.3s);
+		}
+
+		.g-left-points {
+			padding-top: 25px;
+			@include breakpoint(mobile-only) {
+				padding-top: 0;
+				margin-bottom: 40px;
+				.g-content {
+					text-align: left;
+				}
+			}
+			.g-keypoints-item-icon {
+				float: right;
+				@include breakpoint(mobile-only) {
+					float: left;
+				}
+			}
+
+			.g-title-desc-container {
+				margin-right: 85px;
+				@include breakpoint(mobile-only) {
+					margin-right: 0;
+					margin-left: 85px;
+				}
+			}
+		}
+
+		.g-right-points {
+			padding-top: 25px;
+			@include breakpoint(mobile-only) {
+				padding-top: 0;
+				margin-top: 15px;
+			}
+			.g-keypoints-item-icon {
+				float: left;
+			}
+
+			.g-title-desc-container {
+				margin-left: 85px;
+			}
+		}
+
+		.g-keypoints-item-title {
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+	}
+}

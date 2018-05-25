@@ -1,0 +1,75 @@
+// Set the variable defaults in case they are missing in the template
+$top-background-color: #e9e9e9 !default;
+$top-text-color: #666666 !default;
+$fontsizes-body-font-size: 1rem !default;
+
+#g-top {
+	.g-touch-toggle {
+		a {
+			padding: 9.125px 15px;
+			border-right: 1px solid lighten($top-background-color, 10%);
+			border-left: 1px solid lighten($top-background-color, 10%);
+			color: $top-text-color;
+			display: inline-block;
+			@include transition(all 0.2s);
+			span {
+				margin-right: 8px;
+			}
+			&:hover {
+				background: lighten($top-background-color, 10%);
+			}
+		}
+	}
+}
+
+#g-touch {
+	.uk-modal-dialog {
+		padding: 0;
+		border-radius: 0;
+		color: $base-text-color;
+		[id*="g-map-"] {
+			max-width: 100% !important;
+		}
+		.uk-close {
+			position: absolute;
+			right: -15px;
+			top: -15px;
+			opacity: 1;
+			font-size: 1.2rem;
+			color: #ffffff;
+			&:hover {
+				color: $accent-color-1;
+			}
+		}
+	}
+	.g-block {
+		&:last-child {
+			.g-touch-item {
+				border: none;
+			}
+		}
+	}
+	.g-touch-item {
+		text-align: center;
+		padding: 25px 10px;
+		border-right: 1px solid $base-border-color;
+		font-weight: bold;
+		color: $base-text-color;
+		font-size: $fontsizes-body-font-size;
+		height: 100%;
+		@include display(flex);
+		@include align-items(center);
+		@include justify-content(center);
+		@include breakpoint(mobile-only) {
+			border-right: none;
+			border-bottom: 1px solid $base-border-color;
+			padding: 15px 10px;
+		}
+		a {
+			color: $base-text-color;
+		}
+		.g-touch-item-icon {
+			margin-right: 9px;
+		}
+	}
+}

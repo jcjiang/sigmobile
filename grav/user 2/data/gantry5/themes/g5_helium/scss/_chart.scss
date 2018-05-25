@@ -1,0 +1,46 @@
+.g-chart {
+	.g-grid {
+		margin-left: -($content-padding);
+		margin-right: -($content-padding);
+	}
+	.g-chart-feature-left {
+		@include breakpoint(mobile-only) {
+			margin-bottom: 35px;
+		}
+		.g-content {
+			margin: 0 $content-margin 0 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			@include breakpoint(mobile-only) {
+				margin: 0;
+			}
+		}
+	}
+	.g-chart-feature-right {
+		.g-content {
+			margin: 0 0 0 $content-margin;
+			padding-top: 0;
+			padding-bottom: 0;
+			@include breakpoint(mobile-only) {
+				margin: 0;
+			}
+		}
+		&.align-right {
+			text-align: right;
+		}
+	}
+	.g-chart-feature-title {
+		margin-top: -5px;
+	}
+	.g-chart-feature-link {
+		margin-top: 5px;
+		i {
+			margin-right: 10px;
+		}
+	}
+	.g-chart-feature-desc {
+		i {
+			margin-right: 8px;
+		}
+	}
+}

@@ -1,0 +1,283 @@
+// Set the variable defaults in case they are missing in the template
+$base-element-color: #f8f8f8 !default;
+$base-title-color: #033d5a !default;
+
+.g-people {
+	.g-person-image {
+		float: left;
+		@include breakpoint(tablet-range) {
+			display: none;
+		}
+		img {
+			border-radius: 50%;
+			width: 70px;
+			@include breakpoint(mobile-only) {
+				width: 50px;
+			}
+			@include breakpoint(desktop-range) {
+				width: 50px;
+			}
+		}
+	}
+	.g-person-name {
+		h4 {
+			margin: 0;
+			@include breakpoint(mobile-only) {
+				font-size: 1rem;
+			}
+			@include breakpoint(tablet-range) {
+				font-size: 1rem;
+			}
+			@include breakpoint(desktop-range) {
+				font-size: 1rem;
+			}
+		}
+	}
+	.g-person-position {
+		color: $accent-color-1;
+		font-style: italic;
+		margin-top: -3px;
+		@include breakpoint(mobile-only) {
+			margin-top: 0;
+		}
+	}
+	.image-present {
+		.g-person-container {
+			margin-left: 100px;
+			margin-top: 20px;
+			@include breakpoint(mobile-only) {
+				margin-left: 70px;
+				margin-top: 15px;
+			}
+			@include breakpoint(tablet-range) {
+				margin: 0;
+			}
+			@include breakpoint(desktop-range) {
+				margin-left: 70px;
+				margin-top: 15px;				
+			}
+		}
+		&.position-present {
+			.g-person-container {
+				margin-top: 10px;
+				@include breakpoint(tablet-range) {
+					margin: 0;
+				}
+				@include breakpoint(desktop-range) {
+					margin-top: 4px;
+				}
+			}
+		}
+	}
+
+	.uk-tab {
+		border: none;
+		> li {
+			> a {
+				border: 2px solid lighten($base-border-color, 3%);
+				border-radius: 0;
+				margin: 0 !important;
+				color: $base-text-color;
+				text-shadow: none;
+				padding: 15px 20px !important;
+				background: #ffffff;
+				box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
+				text-align: left;
+				@include transition(all, 0.2s);
+				&:hover {
+					color: $base-text-color;
+					background: $base-element-color;
+				}
+				@include breakpoint(tablet-range) {
+					padding: 15px !important;
+				}
+			}
+			&.uk-active {
+				> a {
+					color: $base-text-color;
+					border-color: $accent-color-1;
+					&:hover {
+						background: #ffffff;
+					}
+				}
+			}
+		}
+		.uk-tab-responsive {
+			margin: 0;
+			> a {
+				cursor: pointer;
+			}
+			.uk-dropdown {
+				margin: 0;
+				font-size: 0.9rem;
+				border-color: $base-border-color;
+				padding: 0;
+				border-radius: 0;
+				.uk-nav {
+					margin: 0;
+					li {
+						a {
+							padding: 15px 25px;
+							color: $base-text-color;
+							&:before {
+								border: none;
+							}
+							&:hover {
+								background: $base-element-color;
+								box-shadow: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.uk-tab-grid {
+		&:before {
+			border: none;
+		}
+		margin: 0;
+		&.uk-tab-top, &.uk-tab-bottom {
+			.g-people-nav {
+				@include breakpoint(mobile-only) {
+					width: auto;
+				}
+				> a {
+					@include breakpoint(mobile-only) {
+						margin-left: 0 !important;
+					}
+				}
+			}
+		}
+	}
+	.uk-tab-top, .uk-tab-bottom {
+		margin-left: -20px;
+		.uk-tab-responsive {
+			margin-left: 20px;
+			.g-people-nav {
+				> a {
+					margin-left: 0 !important;
+				}
+			}
+		}
+		.g-people-nav {
+			> a {
+				margin-left: 20px !important;
+			}
+		}
+	}
+	.uk-tab-left, .uk-tab-right {
+		.g-people-nav {
+			> a {
+				margin-top: 20px !important;
+				@include breakpoint(mobile-only) {
+					margin-top: 0 !important;
+				}
+			}
+			&:first-child {
+				> a {
+					margin-top: 0 !important;
+				}
+			}
+		}
+	}
+	.tabs-content {
+		overflow: hidden;
+		&.uk-margin {
+			margin-bottom: 0;
+		}
+		p {
+			margin-bottom: 0;
+		}
+		.button {
+			margin-top: 30px;
+			> i {
+				margin-right: 8px;
+			}
+		}
+		&.left {
+			padding-left: 30px;
+			@include breakpoint(mobile-only) {
+				padding-left: 0;
+				padding-top:  35px;
+			}
+			p {
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+		}
+		&.right {
+			padding-right: 30px;
+			@include breakpoint(mobile-only) {
+				padding-right: 0;
+				padding-top: 35px;
+			}
+			p {
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+		}
+		&.top {
+			padding: 35px 0 0;
+			margin: 0;
+			> li {
+				margin: 0;
+			}
+		}
+		&.bottom {
+			padding: 0 0 35px;
+			margin: 0;
+			> li {
+				margin: 0;
+			}
+		}
+	}
+	.g-person-content {
+		.g-person-name {
+			h3 {
+				margin: 0;
+			}
+		}
+		.g-person-position {
+			margin-top: 2px;
+		}
+		.g-person-social {
+			margin-top: 18px;
+			> a {
+				border: 1px solid $base-border-color;
+				border-radius: 50%;
+				width: 40px;
+				height: 40px;
+				line-height: 38px;
+				text-align: center;
+				margin-right: 10px;
+				display: inline-block;
+				@include transition(all 0.2s);
+				&:last-child {
+					margin-right: 0;
+				}
+				&:hover {
+					color: $accent-color-1;
+					border-color: $accent-color-1;
+				}
+			}
+		}
+		.g-person-desc {
+			margin-top: 25px;
+		}
+		blockquote {
+			border-left: 5px solid $accent-color-1;
+			margin: 10px 0 0;
+			padding: 0 0 0 $content-padding;
+			font-size: 24px;
+			font-style: italic;
+			color: $base-title-color;
+			p {
+				font-size: 24px;
+				color: $base-title-color;
+			}
+		}
+	}
+}

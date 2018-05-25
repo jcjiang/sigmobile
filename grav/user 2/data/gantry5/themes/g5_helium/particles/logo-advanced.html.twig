@@ -1,0 +1,69 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+	{% if particle.enabled %}
+		{{ parent() }}
+		<style type="text/css">
+			.g-logo-info-panel {
+				width: {{ particle.panelwidth|default('400px') }};
+			}
+		</style>
+	{% endif %}
+{% endblock %}
+
+{% block particle %}
+    {% set url = url(particle.url)|default(gantry.siteUrl()) %}
+    {% if (url == gantry.siteUrl()) %}{% set rel='rel="home"' %}{% endif %}
+
+<div class="g-logo-advanced g-logo">
+
+	<a href="{{ url }}" title="{{ particle.text }}" {{ rel|default('')|raw }} class="{{ particle.class|default('')|raw }}">
+	    {% set image = url(particle.image) %}
+	    {% if image %}
+	    <img src="{{ url(particle.image) }}" alt="{{ particle.text }}" />
+	    {% else %}
+	    {{ particle.text|default('Logo') }}
+	    {% endif %}
+	</a>
+
+	{% if particle.infopanel %}
+		<div class="g-logo-info-panel">
+			{% if particle.title or particle.description %}
+				<div class="g-logo-text">
+				    {% if particle.title %}
+				    	<h4 class="g-logo-text-title">
+				    		{{- particle.title|raw -}}
+				    	</h4>
+				    {% endif %}
+
+				    {% if particle.description %}
+				    	<div class="g-logo-text-desc">
+				    		{{- particle.description|raw -}}
+				    	</div>
+				    {% endif %}
+		    	</div>
+		    	<div class="g-logo-social">
+		    		{% if particle.socialtext %}
+			    		<div class="g-logo-social-text">
+			    			{{- particle.socialtext|default('Follow us:')|raw -}}
+			    		</div>
+
+			    		<div class="g-logo-social-icons">
+					        {% for item in particle.socialitems %}
+					            {% set attr_extra_item = '' %}
+					            {% for extra in item.extra %}
+					                {% set attr_extra_item = attr_extra_item ~ ' ' ~ extra|keys|first|e ~ '="' ~ extra|values|first|e('html_attr') ~ '"' %}
+					            {% endfor %}
+					            <a target="{{ particle.socialtarget|default('_blank')|e }}" href="{{ item.link|e }}" title="{{ item.text|e }}" {% if item.class %}class="{{ item.class|e }}"{% endif %} {% if item.extra %}{{ attr_extra_item|raw }}{% endif %}>
+					                <span class="{{ item.icon|e }}"></span>
+					            </a>
+					        {% endfor %}
+			    		</div>
+		    		{% endif %}
+		    	</div>
+		    {% endif %}
+		</div>
+	{% endif %}
+
+</div>
+{% endblock %}

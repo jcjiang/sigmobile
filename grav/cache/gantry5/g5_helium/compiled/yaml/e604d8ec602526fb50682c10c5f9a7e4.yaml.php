@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/mira/Documents/sigmobile/grav/user/data/gantry5/themes/g5_helium/config/default/index.yaml',
-    'modified' => 1527259771,
+    'modified' => 1527273778,
     'data' => [
         'name' => 'default',
         'timestamp' => 1524404624,

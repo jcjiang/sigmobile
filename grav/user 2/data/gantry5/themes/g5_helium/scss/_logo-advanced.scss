@@ -1,0 +1,60 @@
+.g-logo-advanced {
+	display: inline-block;
+	@include breakpoint(mobile-only) {
+		display: block;
+	}
+	.g-logo-info-panel {
+		position: absolute;
+		top: 100%;
+		border-radius: 3px;
+		margin-top: 35px;
+		padding: 20px;
+		background: $accent-color-1;
+		color: #ffffff;
+		box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
+		z-index: 999;
+		opacity: 0;
+		visibility: hidden;
+		@include transition(all 0.15s ease-out 0.4s);
+		.g-logo-text-title {
+			color: #ffffff !important;
+			margin-bottom: 10px;
+			margin-top: 0;
+		}
+		@include breakpoint(mobile-only) {
+			display: none;
+		}
+		a {
+			color: #ffffff;
+		}
+	}
+	&:hover {
+		.g-logo-info-panel {
+			opacity: 1;
+			visibility: visible;
+			margin-top: 15px;
+			@include transition-delay(0s);
+		}		
+	}
+	.g-logo-social {
+		margin-top: 15px;
+		font-weight: bold;
+		.g-logo-social-text {
+			margin-right: 15px;
+			display: inline-block;
+		}
+		.g-logo-social-icons {
+			display: inline-block;
+			> a {
+				margin-right: 7px;
+				@include transition(all 0.2s);
+				&:last-child {
+					margin-right: 0;
+				}
+				&:hover {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
+}

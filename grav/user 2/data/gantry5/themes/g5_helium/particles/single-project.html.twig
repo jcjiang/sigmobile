@@ -1,0 +1,167 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+	{% for attributes in particle.extra %}
+		{% for key, value in attributes %}
+			{% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+
+{% block particle %}
+	<div class="g-single-project{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+		{% if particle.projecttitle %}
+			<div class="g-project-tile-container">
+				<h3 class="g-project-title g-title">
+					{{- particle.projecttitle|raw -}}
+				</h3>
+			</div>
+		{% endif %}
+
+		{% if particle.mainimage or particle.galleryitems or particle.projectsmalldesc or particle.clienttext or particle.clientvalue or particle.tasktext or particle.taskvalue or particle.budgettext or particle.budgetvalue %}
+			<div class="g-grid">
+				<div class="g-block{% if (particle.mainimage or particle.galleryitems) and (particle.projectsmalldesc or particle.clienttext or particle.clientvalue or particle.tasktext or particle.taskvalue or particle.budgettext or particle.budgetvalue) %} size-70{% endif %}">
+					{% if particle.mainimage %}
+						<div class="g-project-main-image">
+							<img alt="{{ particle.mainalt|e }}" src="{{ url(particle.mainimage) }}" {{ particle.mainimage|imagesize|raw }}>
+						</div>
+					{% endif %}
+
+					{% if particle.galleryitems %}
+						<div class="g-project-gallery">
+							<div class="g-grid">
+								{% for item in particle.galleryitems %}
+									<a class="g-project-image-container uk-overlay uk-overlay-hover" href="{{ url(item.image, false, 0) }}" {% if item.title %}title="{{ item.title|e }}"{% endif %} data-uk-lightbox="{group:'single-project-page-particle'}">
+										<span class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></span>				
+										<img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" {{ item.image|imagesize|raw }}>
+									</a>							
+								{% endfor %}
+							</div>
+						</div>
+					{% endif %}
+				</div>
+
+				<div class="g-block{% if (particle.mainimage or particle.galleryitems) and (particle.projectsmalldesc or particle.clienttext or particle.clientvalue or particle.tasktext or particle.taskvalue or particle.budgettext or particle.budgetvalue) %} size-30{% endif %}">
+					{% if particle.clienttext or particle.clientvalue or particle.tasktext or particle.taskvalue or particle.budgettext or particle.budgetvalue %}
+						<div class="g-project-details">
+							{% if particle.clienttext or particle.clientvalue %}
+								<div class="g-client">
+									{%- if particle.clienttext -%}
+										<h4 class="title-clienttext">
+											{{- particle.clienttext|raw -}}:
+										</h4>
+									{%- endif -%}
+
+									{%- if particle.clientvalue -%}
+										<h4 class="title-clientvalue">
+											{{- particle.clientvalue|raw -}}
+										</h4>
+									{%- endif -%}	
+								</div>
+							{% endif %}
+
+							{% if particle.tasktext or particle.taskvalue %}
+								<div class="g-task">
+									{%- if particle.tasktext -%}
+										<h4 class="title-tasktext">
+											{{- particle.tasktext|raw -}}:
+										</h4>
+									{%- endif -%}
+
+									{%- if particle.taskvalue -%}
+										<h4 class="title-taskvalue">
+											{{- particle.taskvalue|raw -}}
+										</h4>
+									{%- endif -%}	
+								</div>
+							{% endif %}
+
+							{% if particle.budgettext or particle.budgetvalue %}
+								<div class="g-budget">
+									{%- if particle.budgettext -%}
+										<h4 class="title-budgettext">
+											{{- particle.budgettext|raw -}}:
+										</h4>
+									{%- endif -%}
+
+									{%- if particle.budgetvalue -%}
+										<h4 class="title-budgetvalue">
+											{{- particle.budgetvalue|raw -}}
+										</h4>
+									{%- endif -%}	
+								</div>
+							{% endif %}
+						</div>
+					{% endif %}
+
+					{% if particle.projectsmalldesc %}
+						<div class="g-project-smalldesc">
+							{{- particle.projectsmalldesc|raw -}}
+						</div>
+					{% endif %}
+
+					{% if particle.link %}
+						<div class="g-project-link-container">
+							<a class="button g-project-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_blank')|e }}">
+								{%- if particle.buttonicon -%}<i class="{{ particle.buttonicon|e }}"></i>{%- endif -%}
+								{{- particle.buttontext|raw -}}
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+
+		<hr>
+
+		{% if particle.projecttitle2 %}
+			<div class="g-project-tile2-container clearfix">
+				<h3 class="g-project-title2">
+					{{- particle.projecttitle2|raw -}}
+				</h3>
+			</div>
+		{% endif %}
+
+		{% if particle.featuresitems %}
+			<div class="g-project-features">
+				{% for row in particle.featuresitems|batch(particle.featurescolumns|default('2')|e) %}
+					<div class="g-grid">
+						{% for item in row %}
+							<div class="g-block{% if item.class %} {{ item.class|e }}{% endif %}">
+								<div class="g-project-features-item">
+									{% if item.icon %}
+										<span class="g-item-icon {{ item.icon|e }}"></span>
+									{% endif %}
+
+									{% if item.title %}
+										<span class="g-item-title">{{ item.title|e }}</span>
+									{% endif %}
+
+									{% if item.value %}
+										<span class="g-item-value">{{ item.value|e }}</span>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		{% if particle.projectdescription %}
+			<div class="g-project-desc">
+				{{- particle.projectdescription|raw -}}
+			</div>
+		{% endif %}
+
+		{% if particle.link %}
+			<div class="g-project-link-container">
+				<a class="button g-project-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_blank')|e }}">
+					{%- if particle.buttonicon -%}<i class="{{ particle.buttonicon|e }}"></i>{%- endif -%}
+					{{- particle.buttontext|raw -}}
+				</a>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

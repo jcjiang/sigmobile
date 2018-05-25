@@ -1,0 +1,364 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Content Finder #}
+{% set articles = grav.page.collection({
+    items: {'@taxonomy.category': filter.categories|split(' ')},
+    order: {by: sort.orderby, dir: sort.ordering},
+    url_taxonomy_filters: false
+}, false).slice(limit.start, limit.total) %}
+
+{% set particleheading %}
+    <div class="g-particle-intro">
+        {% if particle.mainheading %}
+            <h3 class="g-title g-main-title">{{ particle.mainheading|raw }}</h3>
+            <div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
+        {% endif %} 
+        {% if particle.introtext %}<p class="g-introtext">{{ particle.introtext|raw }}</p>{% endif %}
+    </div>
+{% endset %}
+
+{%- set slideshow_settings -%}
+    {
+        autoplay:{{ particle.autoplay|default("true")|e }},
+        autoplayInterval:{{ particle.autoplayInterval|default(7000)|e }},
+        kenburns:{{ particle.kenburns|default("false")|e }},
+        animation:'{{ particle.animation|default('fade')|e }}',
+        duration:{{ particle.animationDuration|default(500)|e }},
+        pauseOnHover:{{ particle.pauseOnHover|default("true")|e }},
+        height:'{{ particle.height|default('auto')|e }}'
+    }
+{%- endset -%}
+
+{% set slideshow_slides %}
+    {% for article in articles %}
+
+        {% set slide_media %}
+            {% if display.image.enabled and (article.header.image.summary.enabled or article.header.image.text.enabled) %}
+                {%- if display.image.enabled == 'intro' -%}
+                    {% set file = article.header.image.summary.enabled|defined(false) ? (article.header.image.summary.file ?: true) %}
+                {% elseif display.image.enabled == 'full' %}
+                    {% set file = article.header.image.text.enabled|defined(false) ? (article.header.image.text.file ?: true) %}
+                {% endif %}
+
+                {% set imageinner = file is same as(true) ? article.media.images|first : (file ? article.media.images[file]) %}
+
+                <img src="{{ url(imageinner.url) }}" {{ imageinner.url|imagesize|raw }} alt="{{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw }}" />
+            {% endif %}
+        {% endset %} 
+
+        {% set slide_overlay %}
+
+            {% set overlay_position %}
+                {%- if particle.overlayposition|default('bottom') == 'bottom' -%}
+                    uk-overlay-bottom
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'left' -%}
+                    uk-overlay-left
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'right' -%}
+                    uk-overlay-right
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'top' -%}
+                    uk-overlay-top
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'bottom-left' -%}
+                    uk-flex-bottom
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'bottom-center' -%}
+                    uk-flex-bottom uk-flex-center
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'bottom-right' -%}
+                    uk-flex-bottom uk-flex-right
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'middle-left' -%}
+                    uk-flex-middle
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'middle-center' -%}
+                    uk-flex-middle uk-flex-center
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'middle-right' -%}
+                    uk-flex-middle uk-flex-right
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'top-left' -%}
+                    uk-flex-top
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'top-center' -%}
+                    uk-flex-top uk-flex-center
+                {%- endif -%}
+
+                {%- if particle.overlayposition|default('bottom') == 'top-right' -%}
+                    uk-flex-top uk-flex-right
+                {%- endif -%}
+            {%- endset -%}
+
+            {%- set slide_overlay_animation -%}
+                {%- if particle.overlayanimation|default('fade') == 'fade' -%}
+                    uk-overlay-fade
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-left' -%}
+                    uk-overlay-slide-left
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-right' -%}
+                    uk-overlay-slide-right
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-top' -%}
+                    uk-overlay-slide-top
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-bottom' -%}
+                    uk-overlay-slide-bottom
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-left-short' -%}
+                    uk-overlay-slide-left uk-overlay-left-short
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-right-short' -%}
+                    uk-overlay-slide-right uk-overlay-right-short
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-top-short' -%}
+                    uk-overlay-slide-top uk-overlay-top-short
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'slide-bottom-short' -%}
+                    uk-overlay-slide-bottom uk-overlay-bottom-short
+                {%- endif -%}
+
+                {%- if particle.overlayanimation|default('fade') == 'scale' -%}
+                    uk-overlay-scale
+                {%- endif -%}
+            {%- endset -%}
+
+            {% set articletitle %}
+                <h3 class="g-slideshow-title">
+                    {%- if display.title.enabled|default('show') == 'show' -%}
+                        <a href="{{ article.url }}">
+                            {{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw -}}
+                        </a>
+                    {%- else -%}
+                        {{- (display.title.limit ? article.title|e|truncate_text(display.title.limit) : article.title|e)|raw -}}
+                    {%- endif -%}
+                </h3>
+            {% endset %}
+
+            {% set articledetails %}
+                <div class="g-article-details details-{{ particle.articledetails }}">
+                    {% if display.date.enabled %}
+                        <span class="g-article-date">
+                            {%- if display.date.enabled == 'published' -%}
+                                <i class="fa fa-clock-o"></i>{{- article.publishDate()|date(display.date.format) -}}
+                            {%- elseif display.date.enabled == 'modified' -%}
+                                <i class="fa fa-clock-o"></i>{{- article.modified|date(display.date.format) -}}
+                            {%- else -%}
+                                <i class="fa fa-clock-o"></i>{{- article.date|date(display.date.format) -}}
+                            {%- endif -%}
+                        </span>
+                    {% endif %}
+
+                    {% if display.author.enabled and (article.header.author.username or article.header.author.name or article.header.author.alias) %}
+                        {% if article.header.author.name %}
+                            {% set author = article.header.author.name %}
+                        {% elseif article.header.author.alias %}
+                            {% set author = article.header.author.alias %}
+                        {% else %}
+                            {% set author = article.header.author.username %}
+                        {% endif %}
+
+                        <span class="g-article-author">
+                            <i class="fa fa-user"></i>{{- author -}}
+                        </span>
+                    {% endif %}
+
+                    {% if display.category.enabled %}
+                        {% set category_link = display.category.route == true %}
+                        <span class="g-article-category">
+                            {% for category in article.taxonomy.category %}
+                                {% if category_link %}
+                                    <a href="{{ base_url ~ display.category.route }}">
+                                        <i class="fa fa-folder-open"></i>{{- category|raw -}}
+                                    </a>
+                                {% else %}
+                                    <i class="fa fa-folder-open"></i>{{- category|raw -}}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                </div>
+            {% endset %}
+
+            {% set readmorebutton %}
+                <div class="g-article-read-more">
+                    <a href="{{ article.url }}">
+                        <button class="button">{{ display.read_more.label|default('Read More...') }}</button>
+                    </a>
+                </div>
+            {% endset %}
+
+            {% set articletext %}
+                {% set article_text = display.text.type == 'intro' ? article.summary : article.content %}
+                <div class="g-slideshow-desc">
+                    {%- if display.text.formatting == 'text' -%}
+                        {{- article_text|truncate_text(display.text.limit)|raw -}}
+                    {%- else -%}
+                        {{- gantry.platform.filter(article_text)|truncate_html(display.text.limit)|html|raw -}}
+                    {%- endif -%}
+
+                    {%- if particle.overlaystyle|default('style1') == 'style2' and display.read_more.enabled -%}
+                        {{ readmorebutton }}
+                    {%- endif -%}
+                </div>
+            {% endset %}
+
+            {% if particle.overlaystyle|default('style1') == 'style1' or particle.overlaystyle|default('style1') == 'style3' %}
+
+                {% if (particle.overlayposition|default('bottom') == 'bottom') or (particle.overlayposition|default('bottom') == 'top') or (particle.overlayposition|default('bottom') == 'left') or (particle.overlayposition|default('bottom') == 'right') %}
+                     <div class="uk-overlay-panel{% if particle.overlaystyle|default('style1') == 'style1' %} uk-overlay-background{% endif %} {{ overlay_position }} {{ slide_overlay_animation }} {% if particle.overlaywidth|default(auto)|e != 'auto' %} uk-width-1-{{ particle.overlaywidth|default(auto)|e }}{% endif %} {{ particle.overlaystyle|default("style1")|e }}">
+                        <div class="slideshow-caption">
+                            {% if display.title.enabled %}
+                                {{ articletitle }}
+                            {% endif %}
+
+                            {% if particle.articledetails|default('show') == 'show' %}
+                                {{ articledetails }}
+                            {% endif %}
+
+                            {% if display.text.type %}
+                                {{ articletext }}
+                            {% endif %}
+
+                            {% if particle.articledetails|default('show') == 'showbottom' %}
+                                {{ articledetails }}
+                            {% endif %}
+
+                            {% if display.read_more.enabled %}
+                                {{ readmorebutton }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="uk-overlay-panel uk-flex {{ overlay_position }} {{ slide_overlay_animation }}{% if particle.overlaycontainer|default(0) == 1 %} g-overlay-container{% endif %} {{ particle.overlaystyle|default("style1")|e }}">
+                        <div class="slideshow-caption{% if particle.overlaystyle|default('style1') == 'style1' %} uk-overlay-background{% endif %} {% if particle.overlaywidth|default(auto)|e != 'auto' %} uk-width-1-{{ particle.overlaywidth|default(auto)|e }}{% endif %}">
+                            {% if display.title.enabled %}
+                                {{ articletitle }}
+                            {% endif %}
+
+                            {% if particle.articledetails|default('show') == 'show' %}
+                                {{ articledetails }}
+                            {% endif %}
+
+                            {% if display.text.type %}
+                                {{ articletext }}
+                            {% endif %}
+
+                            {% if particle.articledetails|default('show') == 'showbottom' %}
+                                {{ articledetails }}
+                            {% endif %}
+
+                            {% if display.read_more.enabled %}
+                                {{ readmorebutton }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+            {% if particle.overlaystyle|default('style1') == 'style2' %}
+                
+                {% if (particle.overlayposition|default('bottom') == 'bottom') or (particle.overlayposition|default('bottom') == 'top') or (particle.overlayposition|default('bottom') == 'left') or (particle.overlayposition|default('bottom') == 'right') %}
+                     <div class="uk-overlay-panel {{ overlay_position }} {{ slide_overlay_animation }} {% if particle.overlaywidth|default(auto)|e != 'auto' %} uk-width-1-{{ particle.overlaywidth|default(auto)|e }}{% endif %} {{ particle.overlaystyle|default("style1")|e }}">
+                        <div class="slideshow-caption">
+                            {% if display.title.enabled %}
+                                {{ articletitle }}
+                            {% endif %}
+
+                            {% if display.text.type or display.read_more.enabled %}
+                                {{ articletext }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="uk-overlay-panel uk-flex {{ overlay_position }} {{ slide_overlay_animation }}{% if particle.overlaycontainer|default(0) == 1 %} g-overlay-container{% endif %} {{ particle.overlaystyle|default("style1")|e }}">
+                        <div class="slideshow-caption {% if particle.overlaywidth|default(auto)|e != 'auto' %} uk-width-1-{{ particle.overlaywidth|default(auto)|e }}{% endif %}">
+                            {% if display.title.enabled %}
+                                {{ articletitle }}
+                            {% endif %}
+                            {% if display.text.type or display.read_more.enabled %}
+                                {{ articletext }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+        {% endset %}
+
+        <li class="g-slideshow-item">
+            {{ slide_media }}
+            {% if display.title.enabled or particle.articledetails|default('show') == 'show' or display.text.type or display.read_more.enabled %}
+                {{ slide_overlay }}
+            {% endif %}
+        </li>
+
+    {% endfor %}
+{% endset %}
+
+{% block particle %}
+    
+    <div class="g-slideshow{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+        {% if particle.mainheading or particle.introtext %}
+            {{ particleheading }}
+        {% endif %}
+        <div class="uk-slidenav-position{% if particle.fullscreen|default(0) %} fullscreen{% endif %}{% if particle.navigation|default('arrows') == 'arrowsvisible' or particle.navigation|default('arrows') == 'bothvisible' %} nav-visible{% endif %}" data-uk-slideshow="{{ slideshow_settings }}">
+            <ul class="uk-slideshow uk-overlay-active{% if particle.fullscreen|default(0) %} uk-slideshow-fullscreen{% endif %}">
+                {{ slideshow_slides }}
+            </ul>
+
+            {% if (particle.navigation|default('arrows') == 'arrows') or (particle.navigation|default('arrows') == 'arrowsvisible') or (particle.navigation|default('arrows') == 'both') or (particle.navigation|default('arrows') == 'bothvisible') %}
+                <a href="" class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                <a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
+            {% endif %}
+
+            {% if (particle.navigation|default('arrows') == 'dots') or (particle.navigation|default('arrows') == 'both') or (particle.navigation|default('arrows') == 'bothvisible') %}
+                <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
+                {% set counter = 0 %}
+                {% for article in articles %}
+                    <li data-uk-slideshow-item="{{ counter }}"><a href=""></a></li>
+                    {% set counter = counter + 1 %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
