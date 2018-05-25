@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/admin/admin.yaml',
-    'modified' => 1527275169,
+    'modified' => 1527275571,
     'data' => [
         'enabled' => true,
         'route' => '/admin',

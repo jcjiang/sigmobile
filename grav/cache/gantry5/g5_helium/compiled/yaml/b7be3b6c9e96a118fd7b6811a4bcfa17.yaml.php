@@ -2,10 +2,10 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/sub-page/index.yaml',
-    'modified' => 1527266761,
+    'modified' => 1527275683,
     'data' => [
         'name' => 'sub-page',
-        'timestamp' => 1524404622,
+        'timestamp' => 1527275571,
         'version' => 7,
         'preset' => [
             'image' => 'gantry-admin://images/layouts/default.png',
@@ -47,6 +47,9 @@ return [
             ],
             'content' => [
                 'system-content-1587' => 'Page Content'
+            ],
+            'contenttabs' => [
+                'contenttabs-1573' => 'Content Tabs'
             ],
             'position' => [
                 'position-position-4734' => 'Aside',

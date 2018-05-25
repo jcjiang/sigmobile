@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/config/plugins/custom-css.yaml',
-    'modified' => 1527274983,
+    'modified' => 1527275571,
     'data' => [
         'enabled' => true,
         'css_files' => [

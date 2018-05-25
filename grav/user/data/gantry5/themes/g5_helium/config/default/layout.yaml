@@ -19,7 +19,7 @@ layout:
       - system-content-3756
     -
       - 'contentvertcubes-6684 75'
-      - 'custom-1179 25'
+      - 'accordion-3713 25'
     -
       - contentvertcubeslong-2097
   /features/: {  }
@@ -211,10 +211,64 @@ content:
           buttonclass: ''
           buttontarget: _self
           name: 'New item'
-  custom-1179:
-    title: 'Custom HTML'
+  accordion-3713:
     attributes:
-      html: "<h2>Calender</h2>\n<ul>\n<li>March 13: MobiCom'18 CFP</li>\n<li>June 10-15: <a href=\"https://www.sigmobile.org/mobisys/2018/\">MobiSys'18</a></li>\n<li>MobiCom'18</li>\n<li>UbiComp'18</li>\n</ul>"
+      mainheading: Calendar
+      items:
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: 'hewwo '
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: ''
+          class: ''
+          extra: {  }
+          name: 'New item'
+        -
+          title: 'hewwo '
+          description: ''
+          class: ''
+          extra: {  }
+          name: 'New item'
   contentvertcubeslong-2097:
     title: 'Content Vertical Cubes Long'
     attributes:

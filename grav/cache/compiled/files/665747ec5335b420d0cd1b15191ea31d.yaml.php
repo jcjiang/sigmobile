@@ -2,10 +2,10 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/admin/blueprints.yaml',
-    'modified' => 1527275169,
+    'modified' => 1527275571,
     'data' => [
         'name' => 'Admin Panel',
-        'version' => '1.7.4',
+        'version' => '1.8.2',
         'description' => 'Adds an advanced administration panel to manage your site',
         'icon' => 'empire',
         'author' => [
@@ -21,19 +21,19 @@ return [
         'dependencies' => [
             0 => [
                 'name' => 'grav',
-                'version' => '>=1.4.0'
+                'version' => '>=1.4.5'
             ],
             1 => [
                 'name' => 'form',
-                'version' => '>=2.11.0'
+                'version' => '>=2.14.0'
             ],
             2 => [
                 'name' => 'login',
-                'version' => '>=2.5.0'
+                'version' => '>=2.7.0'
             ],
             3 => [
                 'name' => 'email',
-                'version' => '~2.0'
+                'version' => '>=2.7.0'
             ]
         ],
         'form' => [
@@ -373,7 +373,8 @@ return [
                     'label' => 'Resize Quality',
                     'default' => 0.80000000000000004,
                     'validate' => [
-                        'type' => 'number'
+                        'type' => 'number',
+                        'step' => 0.01
                     ],
                     'help' => 'The quality to use when resizing an image. Between 0 and 1 value.'
                 ],
