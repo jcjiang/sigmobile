@@ -1,9 +1,19 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527270982,
-    'checksum' => 'e063f84d84eb704cc1e1f207136d71fc',
+    'timestamp' => 1527271072,
+    'checksum' => '624043507c706aaa7680696bb4f39fef',
     'files' => [
+        'user/data/gantry5/themes/g5_helium/config/_body_only' => [
+            'index' => [
+                'file' => 'user/data/gantry5/themes/g5_helium/config/_body_only/index.yaml',
+                'modified' => 1527266761
+            ],
+            'layout' => [
+                'file' => 'user/data/gantry5/themes/g5_helium/config/_body_only/layout.yaml',
+                'modified' => 1524404624
+            ]
+        ],
         'user/data/gantry5/themes/g5_helium/config/default' => [
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/index.yaml',
@@ -1526,77 +1536,26 @@ return [
             ]
         ],
         'index' => [
-            'name' => 'default',
-            'timestamp' => 1527270972,
+            'name' => '_body_only',
+            'timestamp' => 1524404624,
             'version' => 7,
             'preset' => [
-                'image' => 'gantry-admin://images/layouts/default.png',
-                'name' => 'default',
-                'timestamp' => 1518891994
+                'image' => 'gantry-admin://images/layouts/body-only.png',
+                'name' => '_body_only',
+                'timestamp' => 1518891960
             ],
             'positions' => [
-                'aside' => 'Aside',
-                'sidebar' => 'Sidebar'
+                
             ],
             'sections' => [
-                'navigation' => 'Navigation',
-                'intro' => 'Intro',
-                'features' => 'Features',
-                'utility' => 'Utility',
-                'above' => 'Above',
-                'testimonials' => 'Testimonials',
-                'expanded' => 'Expanded',
-                'header' => 'Header',
-                'aside' => 'Aside',
-                'sidebar' => 'Sidebar',
-                'mainbar' => 'Mainbar',
-                'footer' => 'Footer',
-                'offcanvas' => 'Offcanvas'
+                'mainbar' => 'Mainbar'
             ],
             'particles' => [
                 'messages' => [
-                    'system-messages-7972' => 'System Messages'
-                ],
-                'logo' => [
-                    'logo-9608' => 'Logo / Image',
-                    'logo-9571' => 'Logo / Image'
-                ],
-                'menu' => [
-                    'menu-6409' => 'Menu'
-                ],
-                'social' => [
-                    'social-3171' => 'Social'
-                ],
-                'slideshow-grav' => [
-                    'slideshow-grav-3119' => 'Slideshow (Grav)'
+                    'system-messages-6659' => 'System Messages'
                 ],
                 'content' => [
-                    'system-content-3756' => 'Page Content'
-                ],
-                'contentvertcubes' => [
-                    'contentvertcubes-6684' => 'Content Vertical Cubes'
-                ],
-                'accordion' => [
-                    'accordion-9671' => 'Accordion'
-                ],
-                'contentvertcubeslong' => [
-                    'contentvertcubeslong-2097' => 'Content Vertical Cubes Long'
-                ],
-                'position' => [
-                    'position-position-4734' => 'Aside',
-                    'position-position-3949' => 'Sidebar'
-                ],
-                'copyright' => [
-                    'copyright-1736' => 'Copyright'
-                ],
-                'horizontalmenu' => [
-                    'horizontalmenu-9034' => 'Horizontal Menu'
-                ],
-                'totop' => [
-                    'totop-8670' => 'To Top'
-                ],
-                'mobile-menu' => [
-                    'mobile-menu-5697' => 'Mobile-menu'
+                    'system-content-5845' => 'Page Content'
                 ]
             ],
             'inherit' => [
@@ -1606,174 +1565,24 @@ return [
         'layout' => [
             'version' => 2,
             'preset' => [
-                'image' => 'gantry-admin://images/layouts/default.png',
-                'name' => 'default',
-                'timestamp' => 1518891994
+                'image' => 'gantry-admin://images/layouts/body-only.png',
+                'name' => '_body_only',
+                'timestamp' => 1518891960
             ],
             'layout' => [
-                '/navigation/' => [
+                '/mainbar/' => [
                     0 => [
-                        0 => 'system-messages-7972'
+                        0 => 'system-messages-6659'
                     ],
                     1 => [
-                        0 => 'logo-9608 20',
-                        1 => 'menu-6409 58',
-                        2 => 'social-3171 22'
-                    ]
-                ],
-                '/header/' => [
-                    0 => [
-                        0 => 'slideshow-grav-3119'
-                    ]
-                ],
-                '/intro/' => [
-                    0 => [
-                        0 => 'system-content-3756'
-                    ],
-                    1 => [
-                        0 => 'contentvertcubes-6684 75',
-                        1 => 'accordion-9671 25'
-                    ],
-                    2 => [
-                        0 => 'contentvertcubeslong-2097'
-                    ]
-                ],
-                '/features/' => [
-                    
-                ],
-                '/utility/' => [
-                    
-                ],
-                '/above/' => [
-                    
-                ],
-                '/testimonials/' => [
-                    
-                ],
-                '/expanded/' => [
-                    
-                ],
-                '/container-main/' => [
-                    0 => [
-                        0 => [
-                            'aside 25' => [
-                                0 => [
-                                    0 => 'position-position-4734'
-                                ]
-                            ]
-                        ],
-                        1 => [
-                            'mainbar 50' => [
-                                
-                            ]
-                        ],
-                        2 => [
-                            'sidebar 25' => [
-                                0 => [
-                                    0 => 'position-position-3949'
-                                ]
-                            ]
-                        ]
-                    ]
-                ],
-                '/footer/' => [
-                    0 => [
-                        0 => 'logo-9571 10',
-                        1 => 'copyright-1736 30',
-                        2 => 'horizontalmenu-9034 45',
-                        3 => 'totop-8670 15'
-                    ]
-                ],
-                '/offcanvas/' => [
-                    0 => [
-                        0 => 'mobile-menu-5697'
+                        0 => 'system-content-5845'
                     ]
                 ]
             ],
             'structure' => [
-                'navigation' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'header' => [
-                    'attributes' => [
-                        'boxed' => '',
-                        'class' => 'g-flushed'
-                    ]
-                ],
-                'intro' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => '',
-                        'class' => ''
-                    ]
-                ],
-                'features' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'utility' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => '',
-                        'class' => ''
-                    ]
-                ],
-                'above' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'testimonials' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'expanded' => [
-                    'type' => 'section',
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'aside' => [
-                    'attributes' => [
-                        'class' => ''
-                    ],
-                    'block' => [
-                        'fixed' => '1'
-                    ]
-                ],
                 'mainbar' => [
                     'type' => 'section',
-                    'subtype' => 'main'
-                ],
-                'sidebar' => [
-                    'type' => 'section',
-                    'subtype' => 'aside',
-                    'attributes' => [
-                        'class' => ''
-                    ],
-                    'block' => [
-                        'fixed' => '1'
-                    ]
-                ],
-                'container-main' => [
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'footer' => [
-                    'attributes' => [
-                        'boxed' => ''
-                    ]
-                ],
-                'offcanvas' => [
+                    'subtype' => 'main',
                     'attributes' => [
                         'boxed' => ''
                     ]

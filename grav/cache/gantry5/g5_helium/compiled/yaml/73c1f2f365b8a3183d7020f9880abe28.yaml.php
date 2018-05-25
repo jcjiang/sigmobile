@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/default/layout.yaml',
-    'modified' => 1527269011,
+    'modified' => 1527270972,
     'data' => [
         'version' => 2,
         'preset' => [
@@ -323,108 +323,72 @@ return [
                             'title' => 'February 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 1'
                         ],
                         1 => [
                             'title' => 'March 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 2'
                         ],
                         2 => [
                             'title' => 'April 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 3'
                         ],
                         3 => [
                             'title' => 'May 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 4'
                         ],
                         4 => [
                             'title' => 'June 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 5'
                         ],
                         5 => [
                             'title' => 'July 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 6'
                         ],
                         6 => [
                             'title' => 'August 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 7'
                         ],
                         7 => [
                             'title' => 'September 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 8'
                         ],
                         8 => [
                             'title' => 'October 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 9'
                         ],
                         9 => [
                             'title' => 'November 2018',
                             'description' => 'hewwo',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 10'
                         ],
                         10 => [
                             'title' => 'December 2018',
                             'description' => '',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 11'
                         ],
                         11 => [
                             'title' => 'January 2019',
                             'description' => '',
                             'class' => '',
-                            'extra' => [
-                                
-                            ],
                             'name' => 'Month 12'
                         ]
                     ]

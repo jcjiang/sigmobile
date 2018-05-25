@@ -1,9 +1,23 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527270982,
-    'checksum' => 'e063f84d84eb704cc1e1f207136d71fc',
+    'timestamp' => 1527271078,
+    'checksum' => '5b79175a1f59014c64711044644c7adb',
     'files' => [
+        'user/data/gantry5/themes/g5_helium/config/sub-page' => [
+            'assignments' => [
+                'file' => 'user/data/gantry5/themes/g5_helium/config/sub-page/assignments.yaml',
+                'modified' => 1524404622
+            ],
+            'index' => [
+                'file' => 'user/data/gantry5/themes/g5_helium/config/sub-page/index.yaml',
+                'modified' => 1527266761
+            ],
+            'layout' => [
+                'file' => 'user/data/gantry5/themes/g5_helium/config/sub-page/layout.yaml',
+                'modified' => 1524404622
+            ]
+        ],
         'user/data/gantry5/themes/g5_helium/config/default' => [
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/index.yaml',
@@ -1526,13 +1540,13 @@ return [
             ]
         ],
         'index' => [
-            'name' => 'default',
-            'timestamp' => 1527270972,
+            'name' => 'sub-page',
+            'timestamp' => 1524404622,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
                 'name' => 'default',
-                'timestamp' => 1518891994
+                'timestamp' => 1518891960
             ],
             'positions' => [
                 'aside' => 'Aside',
@@ -1567,20 +1581,8 @@ return [
                 'social' => [
                     'social-3171' => 'Social'
                 ],
-                'slideshow-grav' => [
-                    'slideshow-grav-3119' => 'Slideshow (Grav)'
-                ],
                 'content' => [
-                    'system-content-3756' => 'Page Content'
-                ],
-                'contentvertcubes' => [
-                    'contentvertcubes-6684' => 'Content Vertical Cubes'
-                ],
-                'accordion' => [
-                    'accordion-9671' => 'Accordion'
-                ],
-                'contentvertcubeslong' => [
-                    'contentvertcubeslong-2097' => 'Content Vertical Cubes Long'
+                    'system-content-1587' => 'Page Content'
                 ],
                 'position' => [
                     'position-position-4734' => 'Aside',
@@ -1608,7 +1610,7 @@ return [
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
                 'name' => 'default',
-                'timestamp' => 1518891994
+                'timestamp' => 1518891960
             ],
             'layout' => [
                 '/navigation/' => [
@@ -1617,25 +1619,16 @@ return [
                     ],
                     1 => [
                         0 => 'logo-9608 20',
-                        1 => 'menu-6409 58',
-                        2 => 'social-3171 22'
+                        1 => 'menu-6409 60',
+                        2 => 'social-3171 20'
                     ]
                 ],
                 '/header/' => [
-                    0 => [
-                        0 => 'slideshow-grav-3119'
-                    ]
+                    
                 ],
                 '/intro/' => [
                     0 => [
-                        0 => 'system-content-3756'
-                    ],
-                    1 => [
-                        0 => 'contentvertcubes-6684 75',
-                        1 => 'accordion-9671 25'
-                    ],
-                    2 => [
-                        0 => 'contentvertcubeslong-2097'
+                        0 => 'system-content-1587'
                     ]
                 ],
                 '/features/' => [
@@ -1700,14 +1693,13 @@ return [
                 'header' => [
                     'attributes' => [
                         'boxed' => '',
-                        'class' => 'g-flushed'
+                        'class' => ''
                     ]
                 ],
                 'intro' => [
                     'type' => 'section',
                     'attributes' => [
-                        'boxed' => '',
-                        'class' => ''
+                        'boxed' => ''
                     ]
                 ],
                 'features' => [
@@ -1781,283 +1773,33 @@ return [
             ],
             'content' => [
                 'logo-9608' => [
-                    'title' => 'Logo / Image',
-                    'attributes' => [
-                        'url' => '',
-                        'image' => 'gantry-media://sigmobile-logo.svg',
-                        'svg' => ''
-                    ]
+                    'title' => 'Logo / Image'
                 ],
                 'social-3171' => [
                     'attributes' => [
-                        'display' => 'icons_only',
                         'items' => [
                             0 => [
                                 'icon' => 'fa fa-twitter fa-fw',
-                                'text' => 'SIGMOBILE on Twitter',
-                                'link' => 'https://twitter.com/#!/ACMSIGMOBILE',
+                                'text' => '',
+                                'link' => 'http://www.twitter.com/rockettheme',
                                 'name' => 'Twitter'
                             ],
                             1 => [
                                 'icon' => 'fa fa-facebook fa-fw',
-                                'text' => 'SIGMOBILE on Facebook',
-                                'link' => 'http://www.facebook.com/group.php?gid=48078526019',
+                                'text' => '',
+                                'link' => 'http://www.facebook.com/RocketTheme',
                                 'name' => 'Facebook'
                             ],
                             2 => [
-                                'icon' => 'fa fa-youtube fa-fw',
-                                'text' => 'SIGMOBILE Youtube channel',
-                                'link' => 'https://www.youtube.com/channel/UCphR-rPFRLhsQNElk2dSbtw',
-                                'name' => 'Youtube'
-                            ],
-                            3 => [
-                                'icon' => 'fa fa-linkedin-square fa-fw',
-                                'text' => 'SIGMOBILE on LinkedIn',
-                                'link' => 'http://www.linkedin.com/groups?about=&gid=2574763',
-                                'name' => 'Linkedin'
+                                'icon' => 'fa fa-google-plus fa-fw',
+                                'text' => '',
+                                'link' => 'https://plus.google.com/+rockettheme',
+                                'name' => 'Google+'
                             ]
                         ]
                     ],
                     'block' => [
                         'class' => 'g-social-header'
-                    ]
-                ],
-                'slideshow-grav-3119' => [
-                    'title' => 'Slideshow (Grav)',
-                    'attributes' => [
-                        'height' => '500px',
-                        'navigation' => 'arrowsvisible',
-                        'animation' => 'fade',
-                        'kenburns' => 'true',
-                        'overlayposition' => 'bottom',
-                        'article' => [
-                            'filter' => [
-                                'categories' => 'carousel'
-                            ],
-                            'limit' => [
-                                'total' => '3',
-                                'start' => '0'
-                            ],
-                            'sort' => [
-                                'orderby' => 'default',
-                                'ordering' => 'asc'
-                            ],
-                            'display' => [
-                                'image' => [
-                                    'enabled' => 'full'
-                                ],
-                                'title' => [
-                                    'enabled' => 'shownolink'
-                                ],
-                                'date' => [
-                                    'enabled' => '',
-                                    'format' => 'l, F d, Y'
-                                ],
-                                'author' => [
-                                    'enabled' => ''
-                                ],
-                                'category' => [
-                                    'enabled' => ''
-                                ],
-                                'text' => [
-                                    'type' => ''
-                                ],
-                                'read_more' => [
-                                    'enabled' => ''
-                                ]
-                            ]
-                        ],
-                        'articledetails' => 'hide'
-                    ]
-                ],
-                'contentvertcubes-6684' => [
-                    'title' => 'Content Vertical Cubes',
-                    'attributes' => [
-                        'css' => [
-                            'class' => ''
-                        ],
-                        'title' => 'News',
-                        'items' => [
-                            0 => [
-                                'image' => 'gantry-media://news/iStock-622987928.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => 'SIGMOBILE announced new leadership xxxxxxx',
-                                'link' => '',
-                                'linktext' => 'ssss',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ],
-                            1 => [
-                                'image' => 'gantry-media://news/614138202.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => 'SIGMOBILE announced new leadership xxxxxxx',
-                                'link' => '',
-                                'linktext' => 'ssss',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ],
-                            2 => [
-                                'image' => 'gantry-media://news/iStock-622987928.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => 'test',
-                                'link' => '',
-                                'linktext' => 'zzzz',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ]
-                        ]
-                    ]
-                ],
-                'accordion-9671' => [
-                    'attributes' => [
-                        'mainheading' => 'Upcoming Events',
-                        'collapse' => 'true',
-                        'items' => [
-                            0 => [
-                                'title' => 'February 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 1'
-                            ],
-                            1 => [
-                                'title' => 'March 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 2'
-                            ],
-                            2 => [
-                                'title' => 'April 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 3'
-                            ],
-                            3 => [
-                                'title' => 'May 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 4'
-                            ],
-                            4 => [
-                                'title' => 'June 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 5'
-                            ],
-                            5 => [
-                                'title' => 'July 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 6'
-                            ],
-                            6 => [
-                                'title' => 'August 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 7'
-                            ],
-                            7 => [
-                                'title' => 'September 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 8'
-                            ],
-                            8 => [
-                                'title' => 'October 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 9'
-                            ],
-                            9 => [
-                                'title' => 'November 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 10'
-                            ],
-                            10 => [
-                                'title' => 'December 2018',
-                                'description' => '',
-                                'class' => '',
-                                'name' => 'Month 11'
-                            ],
-                            11 => [
-                                'title' => 'January 2019',
-                                'description' => '',
-                                'class' => '',
-                                'name' => 'Month 12'
-                            ]
-                        ]
-                    ]
-                ],
-                'contentvertcubeslong-2097' => [
-                    'title' => 'Content Vertical Cubes Long',
-                    'attributes' => [
-                        'css' => [
-                            'class' => ''
-                        ],
-                        'title' => 'Research Highlights',
-                        'items' => [
-                            0 => [
-                                'image' => 'gantry-media://research/bigstock-Beautiful-Couple-88965989copy.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => '',
-                                'link' => '',
-                                'linktext' => '&rarr;',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ],
-                            1 => [
-                                'image' => 'gantry-media://research/bigstock-Beautiful-Couple-88965989copy.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => '',
-                                'link' => '',
-                                'linktext' => '&rarr;',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ],
-                            2 => [
-                                'image' => 'gantry-media://research/bigstock-Beautiful-Couple-88965989copy.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => '',
-                                'link' => '',
-                                'linktext' => '&rarr;',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ],
-                            3 => [
-                                'image' => 'gantry-media://research/bigstock-Beautiful-Couple-88965989copy.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => '',
-                                'link' => '',
-                                'linktext' => '&rarr;',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ],
-                            4 => [
-                                'image' => 'gantry-media://research/bigstock-Beautiful-Couple-88965989copy.jpg',
-                                'imageposition' => 'left',
-                                'label' => '',
-                                'title' => '',
-                                'link' => '',
-                                'linktext' => '&rarr;',
-                                'buttonclass' => '',
-                                'buttontarget' => '_self',
-                                'name' => 'New item'
-                            ]
-                        ]
                     ]
                 ],
                 'position-position-4734' => [
@@ -2075,7 +1817,6 @@ return [
                 'logo-9571' => [
                     'title' => 'Logo / Image',
                     'attributes' => [
-                        'url' => '',
                         'image' => 'gantry-media://SIGMOBILE_Logo.svg',
                         'svg' => ''
                     ]
@@ -2095,6 +1836,45 @@ return [
                 'totop-8670' => [
                     'title' => 'To Top'
                 ]
+            ]
+        ],
+        'assignments' => [
+            'page' => [
+                0 => [
+                    'about/about-sigmobile' => true,
+                    'about/history' => true,
+                    'about/policies' => true,
+                    'about/committees' => true,
+                    'about/meetings-and-reports' => true,
+                    'about/contact' => true,
+                    'events/calendar' => true,
+                    'events/conferences' => true,
+                    'events/in-cooperation-events' => true,
+                    'events/workshops' => true,
+                    'publications/acm-digital-library' => true,
+                    'publications/getmobile-magazine' => true,
+                    'publications/journals' => true,
+                    'publications/conference-proceedings' => true,
+                    'publications/quarterly-newsletters' => true,
+                    'awards/outstanding-contribution-award' => true,
+                    'awards/rockstar-award' => true,
+                    'awards/test-of-time-paper' => true,
+                    'awards/phd-thesis-award' => true,
+                    'awards/research-highlights' => true,
+                    'awards/best-paper-awards' => true,
+                    'awards/distinguished-service' => true,
+                    'get-involved/membership' => true,
+                    'get-involved/sponsorship' => true,
+                    'get-involved/local-chapters' => true,
+                    'get-involved/funding' => true,
+                    'get-involved/mailing-lists' => true
+                ]
+            ],
+            'language' => [
+                
+            ],
+            'type' => [
+                
             ]
         ]
     ]
