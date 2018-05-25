@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/admin/languages/ro.yaml',
-    'modified' => 1524404166,
+    'modified' => 1527275571,
     'data' => [
         'PLUGIN_ADMIN' => [
             'ADMIN_BETA_MSG' => 'Aceasta este o versiune Beta! Folosiți-o pe propiul risc...',

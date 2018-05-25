@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/login/languages/hr.yaml',
-    'modified' => 1524404176,
+    'modified' => 1527275572,
     'data' => [
         'PLUGIN_LOGIN' => [
             'ACCESS_DENIED' => 'Pristup odbijen...',

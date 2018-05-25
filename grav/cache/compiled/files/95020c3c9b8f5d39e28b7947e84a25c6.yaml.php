@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/accounts/admin.yaml',
-    'modified' => 1524404080,
+    'modified' => 1527275571,
     'data' => [
         'email' => 'admin@sigmobile.hosting.acm.org',
         'fullname' => 'System Administrator',
@@ -22,6 +22,7 @@ return [
         'login_attempts' => [
             
         ],
-        'twofa_secret' => 'OXUJ37TQXEUQZUG5VE2SQ2JBZZSWVEAY'
+        'twofa_secret' => 'OXUJ37TQXEUQZUG5VE2SQ2JBZZSWVEAY',
+        'authorized' => true
     ]
 ];

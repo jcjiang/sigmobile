@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/sub-page/layout.yaml',
-    'modified' => 1524404622,
+    'modified' => 1527275571,
     'data' => [
         'version' => 2,
         'preset' => [
@@ -26,7 +26,8 @@ return [
             ],
             '/intro/' => [
                 0 => [
-                    0 => 'system-content-1587'
+                    0 => 'system-content-1587 72',
+                    1 => 'contenttabs-1573 28'
                 ]
             ],
             '/features/' => [
@@ -199,6 +200,9 @@ return [
                 'block' => [
                     'class' => 'g-social-header'
                 ]
+            ],
+            'contenttabs-1573' => [
+                'title' => 'Content Tabs'
             ],
             'position-position-4734' => [
                 'title' => 'Aside',

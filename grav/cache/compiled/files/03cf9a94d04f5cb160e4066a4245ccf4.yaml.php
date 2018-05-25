@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/form/languages.yaml',
-    'modified' => 1524404094,
+    'modified' => 1527275572,
     'data' => [
         'en' => [
             'PLUGIN_FORM' => [

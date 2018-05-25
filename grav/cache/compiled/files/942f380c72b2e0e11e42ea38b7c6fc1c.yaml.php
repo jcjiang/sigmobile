@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/custom-css/blueprints.yaml',
-    'modified' => 1527274984,
+    'modified' => 1527275572,
     'data' => [
         'name' => 'Custom CSS',
         'version' => '0.2.1',

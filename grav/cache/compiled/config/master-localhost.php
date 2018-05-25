@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1527275185,
-    'checksum' => '29da4ff3802fcd9e7142002884d8e6c2',
+    'timestamp' => 1527275590,
+    'checksum' => '04ade082b3e06d735604b70084eaa221',
     'files' => [
         'user/config' => [
             'media' => [
@@ -11,7 +11,7 @@ return [
             ],
             'plugins/custom-css' => [
                 'file' => 'user/config/plugins/custom-css.yaml',
-                'modified' => 1527268835
+                'modified' => 1527275571
             ],
             'security' => [
                 'file' => 'user/config/security.yaml',
@@ -33,25 +33,25 @@ return [
         'system/config' => [
             'media' => [
                 'file' => 'system/config/media.yaml',
-                'modified' => 1527270397
+                'modified' => 1524404082
             ],
             'site' => [
                 'file' => 'system/config/site.yaml',
-                'modified' => 1527270397
+                'modified' => 1524404082
             ],
             'streams' => [
                 'file' => 'system/config/streams.yaml',
-                'modified' => 1527270397
+                'modified' => 1524404082
             ],
             'system' => [
                 'file' => 'system/config/system.yaml',
-                'modified' => 1527270397
+                'modified' => 1524404082
             ]
         ],
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
-                'modified' => 1527275169
+                'modified' => 1527275571
             ],
             'plugins/bootstrapper' => [
                 'file' => 'user/plugins/bootstrapper/bootstrapper.yaml',
@@ -59,7 +59,7 @@ return [
             ],
             'plugins/custom-css' => [
                 'file' => 'user/plugins/custom-css/custom-css.yaml',
-                'modified' => 1527267294
+                'modified' => 1527275572
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/email.yaml',
@@ -71,7 +71,7 @@ return [
             ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/form.yaml',
-                'modified' => 1527275169
+                'modified' => 1527275572
             ],
             'plugins/gantry5' => [
                 'file' => 'user/plugins/gantry5/gantry5.yaml',
@@ -79,7 +79,7 @@ return [
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/login.yaml',
-                'modified' => 1527275170
+                'modified' => 1527275572
             ],
             'plugins/markdown-notices' => [
                 'file' => 'user/plugins/markdown-notices/markdown-notices.yaml',
