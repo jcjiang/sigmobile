@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/login/blueprints.yaml',
-    'modified' => 1524404102,
+    'modified' => 1527275170,
     'data' => [
         'name' => 'Login',
         'version' => '2.6.3',
