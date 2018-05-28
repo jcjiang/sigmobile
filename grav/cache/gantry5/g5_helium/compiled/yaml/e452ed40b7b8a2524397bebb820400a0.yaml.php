@@ -2,10 +2,10 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/default/index.yaml',
-    'modified' => 1527270972,
+    'modified' => 1527528894,
     'data' => [
         'name' => 'default',
-        'timestamp' => 1527270972,
+        'timestamp' => 1527528894,
         'version' => 7,
         'preset' => [
             'image' => 'gantry-admin://images/layouts/default.png',
@@ -55,10 +55,13 @@ return [
                 'contentvertcubes-6684' => 'Content Vertical Cubes'
             ],
             'accordion' => [
-                'accordion-9671' => 'Accordion'
+                'accordion-3713' => 'Accordion'
             ],
             'contentvertcubeslong' => [
                 'contentvertcubeslong-2097' => 'Content Vertical Cubes Long'
+            ],
+            'custom' => [
+                'custom-2296' => 'Custom HTML'
             ],
             'position' => [
                 'position-position-4734' => 'Aside',

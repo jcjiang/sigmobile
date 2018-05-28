@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/default/styles.yaml',
-    'modified' => 1524404624,
+    'modified' => 1527528068,
     'data' => [
         'preset' => 'preset1',
         'base' => [
@@ -32,7 +32,7 @@ return [
             'text-color' => '#1b1c1c'
         ],
         'intro' => [
-            'background' => '#f5f5f5',
+            'background' => '#ffffff',
             'text-color' => '#424753'
         ],
         'features' => [

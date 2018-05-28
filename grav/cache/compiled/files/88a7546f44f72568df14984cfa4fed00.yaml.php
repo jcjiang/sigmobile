@@ -2,10 +2,10 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/plugins/login/blueprints.yaml',
-    'modified' => 1524404102,
+    'modified' => 1527275572,
     'data' => [
         'name' => 'Login',
-        'version' => '2.6.3',
+        'version' => '2.7.0',
         'description' => 'Enables user authentication and login screen.',
         'icon' => 'sign-in',
         'author' => [
@@ -20,15 +20,15 @@ return [
         'dependencies' => [
             0 => [
                 'name' => 'grav',
-                'version' => '>=1.3.9'
+                'version' => '>=1.4.4'
             ],
             1 => [
                 'name' => 'form',
-                'version' => '>=2.4.0'
+                'version' => '>=2.13.4'
             ],
             2 => [
                 'name' => 'email',
-                'version' => '~2.0'
+                'version' => '>=2.7.0'
             ]
         ],
         'form' => [
@@ -263,7 +263,7 @@ return [
                                             'label' => 'PLUGIN_LOGIN.REGISTRATION_FIELDS',
                                             'help' => 'PLUGIN_LOGIN.REGISTRATION_FIELDS_HELP',
                                             'placeholder_key' => 'PLUGIN_LOGIN.REGISTRATION_FIELD_KEY',
-                                            'placeholder_value' => 'PLUGIN_LOGIN.REGISTRATION_FIELD_VALUE'
+                                            'placeholder_value' => 'PLUGIN_LOGIN.ADDITIONAL_PARAM_VALUE'
                                         ],
                                         'user_registration.default_values' => [
                                             'type' => 'array',

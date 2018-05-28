@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/default/layout.yaml',
-    'modified' => 1527270972,
+    'modified' => 1527528894,
     'data' => [
         'version' => 2,
         'preset' => [
@@ -32,10 +32,11 @@ return [
                 ],
                 1 => [
                     0 => 'contentvertcubes-6684 75',
-                    1 => 'accordion-9671 25'
+                    1 => 'accordion-3713 25'
                 ],
                 2 => [
-                    0 => 'contentvertcubeslong-2097'
+                    0 => 'contentvertcubeslong-2097 75',
+                    1 => 'custom-2296 25'
                 ]
             ],
             '/features/' => [
@@ -314,82 +315,90 @@ return [
                     ]
                 ]
             ],
-            'accordion-9671' => [
+            'accordion-3713' => [
                 'attributes' => [
-                    'mainheading' => 'Upcoming Events',
-                    'collapse' => 'true',
+                    'mainheading' => 'Calendar',
                     'items' => [
                         0 => [
-                            'title' => 'February 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 1'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         1 => [
-                            'title' => 'March 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 2'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         2 => [
-                            'title' => 'April 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 3'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         3 => [
-                            'title' => 'May 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 4'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         4 => [
-                            'title' => 'June 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 5'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         5 => [
-                            'title' => 'July 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 6'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         6 => [
-                            'title' => 'August 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => 'hewwo ',
                             'class' => '',
-                            'name' => 'Month 7'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         7 => [
-                            'title' => 'September 2018',
-                            'description' => 'hewwo',
+                            'title' => 'hewwo ',
+                            'description' => '',
                             'class' => '',
-                            'name' => 'Month 8'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ],
                         8 => [
-                            'title' => 'October 2018',
-                            'description' => 'hewwo',
-                            'class' => '',
-                            'name' => 'Month 9'
-                        ],
-                        9 => [
-                            'title' => 'November 2018',
-                            'description' => 'hewwo',
-                            'class' => '',
-                            'name' => 'Month 10'
-                        ],
-                        10 => [
-                            'title' => 'December 2018',
+                            'title' => 'hewwo ',
                             'description' => '',
                             'class' => '',
-                            'name' => 'Month 11'
-                        ],
-                        11 => [
-                            'title' => 'January 2019',
-                            'description' => '',
-                            'class' => '',
-                            'name' => 'Month 12'
+                            'extra' => [
+                                
+                            ],
+                            'name' => 'New item'
                         ]
                     ]
                 ]
@@ -407,6 +416,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -418,6 +430,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -429,6 +444,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -440,6 +458,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -451,6 +472,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -458,6 +482,20 @@ return [
                             'name' => 'New item'
                         ]
                     ]
+                ]
+            ],
+            'custom-2296' => [
+                'title' => 'Custom HTML',
+                'attributes' => [
+                    'html' => '<h1> VIDEOS </h1>
+<ul>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+</ul>',
+                    'twig' => '0'
                 ]
             ],
             'position-position-4734' => [

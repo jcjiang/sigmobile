@@ -1,9 +1,8 @@
-
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527271078,
-    'checksum' => '5b79175a1f59014c64711044644c7adb',
+    'timestamp' => 1527528082,
+    'checksum' => '6702c514f9c98caef15923be27f41f63',
     'files' => [
         'user/data/gantry5/themes/g5_helium/config/sub-page' => [
             'assignments' => [
@@ -12,21 +11,21 @@ return [
             ],
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/sub-page/index.yaml',
-                'modified' => 1527266761
+                'modified' => 1527275683
             ],
             'layout' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/sub-page/layout.yaml',
-                'modified' => 1524404622
+                'modified' => 1527275571
             ]
         ],
         'user/data/gantry5/themes/g5_helium/config/default' => [
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/index.yaml',
-                'modified' => 1527270972
+                'modified' => 1527275812
             ],
             'layout' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/layout.yaml',
-                'modified' => 1527270972
+                'modified' => 1527275812
             ],
             'page/assets' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/page/assets.yaml',
@@ -118,7 +117,7 @@ return [
             ],
             'styles' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/styles.yaml',
-                'modified' => 1524404624
+                'modified' => 1527528068
             ]
         ],
         'user/themes/g5_helium/config/default' => [
@@ -697,7 +696,7 @@ return [
                 ],
                 'title' => '',
                 'items' => [
-
+                    
                 ]
             ],
             'contenttabs' => [
@@ -709,7 +708,7 @@ return [
                 'class' => '',
                 'title' => '',
                 'items' => [
-
+                    
                 ]
             ],
             'contentvertcubes' => [
@@ -751,7 +750,7 @@ return [
                 'target' => '_blank',
                 'class' => '',
                 'items' => [
-
+                    
                 ]
             ],
             'owlcarousel' => [
@@ -1301,7 +1300,7 @@ return [
                     'class' => ''
                 ],
                 'extra' => [
-
+                    
                 ]
             ],
             'date' => [
@@ -1397,7 +1396,7 @@ return [
                 'text-color' => '#1b1c1c'
             ],
             'intro' => [
-                'background' => '#f5f5f5',
+                'background' => '#ffffff',
                 'text-color' => '#424753'
             ],
             'link' => [
@@ -1437,7 +1436,7 @@ return [
                     'class' => 'gantry g-helium-style',
                     'id' => '',
                     'extra' => [
-
+                        
                     ]
                 ],
                 'layout' => [
@@ -1451,15 +1450,15 @@ return [
                 'favicon' => '',
                 'touchicon' => '',
                 'css' => [
-
+                    
                 ],
                 'javascript' => [
-
+                    
                 ]
             ],
             'head' => [
                 'meta' => [
-
+                    
                 ],
                 'head_bottom' => '',
                 'atoms' => [
@@ -1542,7 +1541,7 @@ return [
         ],
         'index' => [
             'name' => 'sub-page',
-            'timestamp' => 1527269101,
+            'timestamp' => 1527275571,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
@@ -1588,7 +1587,6 @@ return [
                 'contenttabs' => [
                     'contenttabs-1573' => 'Content Tabs'
                 ],
-
                 'position' => [
                     'position-position-4734' => 'Aside',
                     'position-position-3949' => 'Sidebar'
@@ -1607,7 +1605,7 @@ return [
                 ]
             ],
             'inherit' => [
-
+                
             ]
         ],
         'layout' => [
@@ -1629,30 +1627,28 @@ return [
                     ]
                 ],
                 '/header/' => [
-
+                    
                 ],
                 '/intro/' => [
                     0 => [
-
                         0 => 'system-content-1587 72',
                         1 => 'contenttabs-1573 28'
-
                     ]
                 ],
                 '/features/' => [
-
+                    
                 ],
                 '/utility/' => [
-
+                    
                 ],
                 '/above/' => [
-
+                    
                 ],
                 '/testimonials/' => [
-
+                    
                 ],
                 '/expanded/' => [
-
+                    
                 ],
                 '/container-main/' => [
                     0 => [
@@ -1665,7 +1661,7 @@ return [
                         ],
                         1 => [
                             'mainbar 50' => [
-
+                                
                             ]
                         ],
                         2 => [
@@ -1810,11 +1806,9 @@ return [
                         'class' => 'g-social-header'
                     ]
                 ],
-
                 'contenttabs-1573' => [
                     'title' => 'Content Tabs'
                 ],
-
                 'position-position-4734' => [
                     'title' => 'Aside',
                     'attributes' => [
@@ -1884,10 +1878,10 @@ return [
                 ]
             ],
             'language' => [
-
+                
             ],
             'type' => [
-
+                
             ]
         ]
     ]

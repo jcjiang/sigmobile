@@ -1,0 +1,17 @@
+# Grav Root and Unused
+/*.*
+!.gitignore
+/grav/assets
+/grav/backup
+/grav/bin
+/grav/cache
+/grav/images
+/grav/logs
+/grav/system
+/grav/user/*.*
+/grav/user/accounts
+/grav/user/config/*.*
+/grav/user/data
+/grav/user/themes/antimatter
+/grav//vendor
+/grav//webserver-configs
