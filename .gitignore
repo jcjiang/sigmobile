@@ -1,14 +1,14 @@
 # Grav Root and Unused
 /*.*
 !.gitignore
-/assets
-/backup
-/bin
-/cache
-/images
+grav/assets
+grav/backup
+grav/bin
+grav/cache
+grav/images
 /grav/logs
-/system
-user/*.*
+grav/system
+grav/user/*.*
 user/accounts
 user/config/*.*
 user/data
