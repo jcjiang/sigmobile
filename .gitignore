@@ -6,7 +6,7 @@
 /bin
 /cache
 /images
-/logs
+/grav/logs
 /system
 user/*.*
 user/accounts
