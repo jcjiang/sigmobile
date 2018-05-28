@@ -20,7 +20,7 @@ header:
   background-overlay: enabled
   text-color: '#1b1c1c'
 intro:
-  background: '#f5f5f5'
+  background: '#ffffff'
   text-color: '#424753'
 features:
   background: '#ffffff'

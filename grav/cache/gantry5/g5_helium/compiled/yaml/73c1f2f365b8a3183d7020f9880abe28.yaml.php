@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => '/Users/jc/Downloads/SIGMobile-Web/grav/user/data/gantry5/themes/g5_helium/config/default/layout.yaml',
-    'modified' => 1527275812,
+    'modified' => 1527528894,
     'data' => [
         'version' => 2,
         'preset' => [
@@ -35,7 +35,8 @@ return [
                     1 => 'accordion-3713 25'
                 ],
                 2 => [
-                    0 => 'contentvertcubeslong-2097'
+                    0 => 'contentvertcubeslong-2097 75',
+                    1 => 'custom-2296 25'
                 ]
             ],
             '/features/' => [
@@ -415,6 +416,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -426,6 +430,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -437,6 +444,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -448,6 +458,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -459,6 +472,9 @@ return [
                             'imageposition' => 'left',
                             'label' => '',
                             'title' => '',
+                            'tags' => [
+                                
+                            ],
                             'link' => '',
                             'linktext' => '&rarr;',
                             'buttonclass' => '',
@@ -466,6 +482,20 @@ return [
                             'name' => 'New item'
                         ]
                     ]
+                ]
+            ],
+            'custom-2296' => [
+                'title' => 'Custom HTML',
+                'attributes' => [
+                    'html' => '<h1> VIDEOS </h1>
+<ul>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+</ul>',
+                    'twig' => '0'
                 ]
             ],
             'position-position-4734' => [

@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527271072,
-    'checksum' => '624043507c706aaa7680696bb4f39fef',
+    'timestamp' => 1527528073,
+    'checksum' => 'ac569f7aa2f541c457eda7fe776229f2',
     'files' => [
         'user/data/gantry5/themes/g5_helium/config/_body_only' => [
             'index' => [
@@ -17,11 +17,11 @@ return [
         'user/data/gantry5/themes/g5_helium/config/default' => [
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/index.yaml',
-                'modified' => 1527270972
+                'modified' => 1527275812
             ],
             'layout' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/layout.yaml',
-                'modified' => 1527270972
+                'modified' => 1527275812
             ],
             'page/assets' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/page/assets.yaml',
@@ -113,7 +113,7 @@ return [
             ],
             'styles' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/styles.yaml',
-                'modified' => 1524404624
+                'modified' => 1527528068
             ]
         ],
         'user/themes/g5_helium/config/default' => [
@@ -1392,7 +1392,7 @@ return [
                 'text-color' => '#1b1c1c'
             ],
             'intro' => [
-                'background' => '#f5f5f5',
+                'background' => '#ffffff',
                 'text-color' => '#424753'
             ],
             'link' => [
@@ -1723,82 +1723,90 @@ return [
                         ]
                     ]
                 ],
-                'accordion-9671' => [
+                'accordion-3713' => [
                     'attributes' => [
-                        'mainheading' => 'Upcoming Events',
-                        'collapse' => 'true',
+                        'mainheading' => 'Calendar',
                         'items' => [
                             0 => [
-                                'title' => 'February 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 1'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             1 => [
-                                'title' => 'March 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 2'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             2 => [
-                                'title' => 'April 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 3'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             3 => [
-                                'title' => 'May 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 4'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             4 => [
-                                'title' => 'June 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 5'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             5 => [
-                                'title' => 'July 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 6'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             6 => [
-                                'title' => 'August 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => 'hewwo ',
                                 'class' => '',
-                                'name' => 'Month 7'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             7 => [
-                                'title' => 'September 2018',
-                                'description' => 'hewwo',
+                                'title' => 'hewwo ',
+                                'description' => '',
                                 'class' => '',
-                                'name' => 'Month 8'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ],
                             8 => [
-                                'title' => 'October 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 9'
-                            ],
-                            9 => [
-                                'title' => 'November 2018',
-                                'description' => 'hewwo',
-                                'class' => '',
-                                'name' => 'Month 10'
-                            ],
-                            10 => [
-                                'title' => 'December 2018',
+                                'title' => 'hewwo ',
                                 'description' => '',
                                 'class' => '',
-                                'name' => 'Month 11'
-                            ],
-                            11 => [
-                                'title' => 'January 2019',
-                                'description' => '',
-                                'class' => '',
-                                'name' => 'Month 12'
+                                'extra' => [
+                                    
+                                ],
+                                'name' => 'New item'
                             ]
                         ]
                     ]

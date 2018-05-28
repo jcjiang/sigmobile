@@ -1,17 +1,17 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527275814,
-    'checksum' => '12b112cb73263d9a89862d8e624a479a',
+    'timestamp' => 1527528923,
+    'checksum' => 'd448c8416f43ca63a72e8d6a83b747fb',
     'files' => [
         'user/data/gantry5/themes/g5_helium/config/default' => [
             'index' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/index.yaml',
-                'modified' => 1527275812
+                'modified' => 1527528894
             ],
             'layout' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/layout.yaml',
-                'modified' => 1527275812
+                'modified' => 1527528894
             ],
             'page/assets' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/page/assets.yaml',
@@ -103,7 +103,7 @@ return [
             ],
             'styles' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/styles.yaml',
-                'modified' => 1524404624
+                'modified' => 1527528068
             ]
         ],
         'user/themes/g5_helium/config/default' => [
@@ -1382,7 +1382,7 @@ return [
                 'text-color' => '#1b1c1c'
             ],
             'intro' => [
-                'background' => '#f5f5f5',
+                'background' => '#ffffff',
                 'text-color' => '#424753'
             ],
             'link' => [
@@ -1527,7 +1527,7 @@ return [
         ],
         'index' => [
             'name' => 'default',
-            'timestamp' => 1527275812,
+            'timestamp' => 1527528894,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
@@ -1582,6 +1582,9 @@ return [
                 'contentvertcubeslong' => [
                     'contentvertcubeslong-2097' => 'Content Vertical Cubes Long'
                 ],
+                'custom' => [
+                    'custom-2296' => 'Custom HTML'
+                ],
                 'position' => [
                     'position-position-4734' => 'Aside',
                     'position-position-3949' => 'Sidebar'
@@ -1635,7 +1638,8 @@ return [
                         1 => 'accordion-3713 25'
                     ],
                     2 => [
-                        0 => 'contentvertcubeslong-2097'
+                        0 => 'contentvertcubeslong-2097 75',
+                        1 => 'custom-2296 25'
                     ]
                 ],
                 '/features/' => [
@@ -2015,6 +2019,9 @@ return [
                                 'imageposition' => 'left',
                                 'label' => '',
                                 'title' => '',
+                                'tags' => [
+                                    
+                                ],
                                 'link' => '',
                                 'linktext' => '&rarr;',
                                 'buttonclass' => '',
@@ -2026,6 +2033,9 @@ return [
                                 'imageposition' => 'left',
                                 'label' => '',
                                 'title' => '',
+                                'tags' => [
+                                    
+                                ],
                                 'link' => '',
                                 'linktext' => '&rarr;',
                                 'buttonclass' => '',
@@ -2037,6 +2047,9 @@ return [
                                 'imageposition' => 'left',
                                 'label' => '',
                                 'title' => '',
+                                'tags' => [
+                                    
+                                ],
                                 'link' => '',
                                 'linktext' => '&rarr;',
                                 'buttonclass' => '',
@@ -2048,6 +2061,9 @@ return [
                                 'imageposition' => 'left',
                                 'label' => '',
                                 'title' => '',
+                                'tags' => [
+                                    
+                                ],
                                 'link' => '',
                                 'linktext' => '&rarr;',
                                 'buttonclass' => '',
@@ -2059,6 +2075,9 @@ return [
                                 'imageposition' => 'left',
                                 'label' => '',
                                 'title' => '',
+                                'tags' => [
+                                    
+                                ],
                                 'link' => '',
                                 'linktext' => '&rarr;',
                                 'buttonclass' => '',
@@ -2066,6 +2085,20 @@ return [
                                 'name' => 'New item'
                             ]
                         ]
+                    ]
+                ],
+                'custom-2296' => [
+                    'title' => 'Custom HTML',
+                    'attributes' => [
+                        'html' => '<h1> VIDEOS </h1>
+<ul>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+  <li><a href="#">Xxxxxx xxxx xxxxxxxx</a></li>
+</ul>',
+                        'twig' => '0'
                     ]
                 ],
                 'position-position-4734' => [

@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1527389586,
-    'checksum' => '6d07c73cba737d8908b2b1c8dbfca674',
+    'timestamp' => 1527528082,
+    'checksum' => '6702c514f9c98caef15923be27f41f63',
     'files' => [
         'user/data/gantry5/themes/g5_helium/config/sub-page' => [
             'assignments' => [
@@ -117,7 +117,7 @@ return [
             ],
             'styles' => [
                 'file' => 'user/data/gantry5/themes/g5_helium/config/default/styles.yaml',
-                'modified' => 1524404624
+                'modified' => 1527528068
             ]
         ],
         'user/themes/g5_helium/config/default' => [
@@ -1396,7 +1396,7 @@ return [
                 'text-color' => '#1b1c1c'
             ],
             'intro' => [
-                'background' => '#f5f5f5',
+                'background' => '#ffffff',
                 'text-color' => '#424753'
             ],
             'link' => [

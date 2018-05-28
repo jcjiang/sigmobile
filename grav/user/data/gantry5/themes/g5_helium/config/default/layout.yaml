@@ -21,7 +21,8 @@ layout:
       - 'contentvertcubes-6684 75'
       - 'accordion-3713 25'
     -
-      - contentvertcubeslong-2097
+      - 'contentvertcubeslong-2097 75'
+      - 'custom-2296 25'
   /features/: {  }
   /utility/: {  }
   /above/: {  }
@@ -281,6 +282,7 @@ content:
           imageposition: left
           label: ''
           title: ''
+          tags: {  }
           link: ''
           linktext: '&rarr;'
           buttonclass: ''
@@ -291,6 +293,7 @@ content:
           imageposition: left
           label: ''
           title: ''
+          tags: {  }
           link: ''
           linktext: '&rarr;'
           buttonclass: ''
@@ -301,6 +304,7 @@ content:
           imageposition: left
           label: ''
           title: ''
+          tags: {  }
           link: ''
           linktext: '&rarr;'
           buttonclass: ''
@@ -311,6 +315,7 @@ content:
           imageposition: left
           label: ''
           title: ''
+          tags: {  }
           link: ''
           linktext: '&rarr;'
           buttonclass: ''
@@ -321,11 +326,17 @@ content:
           imageposition: left
           label: ''
           title: ''
+          tags: {  }
           link: ''
           linktext: '&rarr;'
           buttonclass: ''
           buttontarget: _self
           name: 'New item'
+  custom-2296:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h1> VIDEOS </h1>\n<ul>\n  <li><a href=\"#\">Xxxxxx xxxx xxxxxxxx</a></li>\n  <li><a href=\"#\">Xxxxxx xxxx xxxxxxxx</a></li>\n  <li><a href=\"#\">Xxxxxx xxxx xxxxxxxx</a></li>\n  <li><a href=\"#\">Xxxxxx xxxx xxxxxxxx</a></li>\n  <li><a href=\"#\">Xxxxxx xxxx xxxxxxxx</a></li>\n</ul>"
+      twig: '0'
   position-position-4734:
     title: Aside
     attributes:
