@@ -1,1 +1,17 @@
-./grav/logs/*
+# Grav Root and Unused
+/*.*
+!.gitignore
+/assets
+/backup
+/bin
+/cache
+/images
+/logs
+/system
+user/*.*
+user/accounts
+user/config/*.*
+user/data
+user/themes/antimatter
+/vendor
+/webserver-configs
